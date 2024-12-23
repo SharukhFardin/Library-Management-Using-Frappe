@@ -1,0 +1,79 @@
+2024-12-23 09:23:13,206 Worker rq:worker:9e3171accd394d97b8945011aaa07f08 started with PID 12425, version 1.16.2
+2024-12-23 09:23:13,206 Subscribing to channel rq:pubsub:9e3171accd394d97b8945011aaa07f08
+2024-12-23 09:23:13,206 *** Listening on home-fardin-Frappe-practice-frappe:short, home-fardin-Frappe-practice-frappe:default, home-fardin-Frappe-practice-frappe:long...
+2024-12-23 09:23:13,206 Cleaning registries for queue: home-fardin-Frappe-practice-frappe:short
+2024-12-23 09:23:13,207 Cleaning registries for queue: home-fardin-Frappe-practice-frappe:default
+2024-12-23 09:23:13,207 Cleaning registries for queue: home-fardin-Frappe-practice-frappe:long
+2024-12-23 09:27:17,868 Worker 9e3171accd394d97b8945011aaa07f08 [PID 12425]: warm shut down requested
+2024-12-23 09:27:17,869 Unsubscribing from channel rq:pubsub:9e3171accd394d97b8945011aaa07f08
+Traceback (most recent call last):
+  File "/home/fardin/Frappe/practice-frappe/env/lib/python3.12/site-packages/redis/connection.py", line 357, in connect
+    sock = self.retry.call_with_retry(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/fardin/Frappe/practice-frappe/env/lib/python3.12/site-packages/redis/retry.py", line 62, in call_with_retry
+    return do()
+           ^^^^
+  File "/home/fardin/Frappe/practice-frappe/env/lib/python3.12/site-packages/redis/connection.py", line 358, in <lambda>
+    lambda: self._connect(), lambda error: self.disconnect(error)
+            ^^^^^^^^^^^^^^^
+  File "/home/fardin/Frappe/practice-frappe/env/lib/python3.12/site-packages/redis/connection.py", line 730, in _connect
+    raise err
+  File "/home/fardin/Frappe/practice-frappe/env/lib/python3.12/site-packages/redis/connection.py", line 718, in _connect
+    sock.connect(socket_address)
+ConnectionRefusedError: [Errno 111] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/fardin/Frappe/practice-frappe/apps/frappe/frappe/utils/bench_helper.py", line 48, in invoke
+    return super().invoke(ctx)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/home/fardin/Frappe/practice-frappe/env/lib/python3.12/site-packages/click/core.py", line 1697, in invoke
+    return _process_result(sub_ctx.command.invoke(sub_ctx))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/fardin/Frappe/practice-frappe/env/lib/python3.12/site-packages/click/core.py", line 1443, in invoke
+    return ctx.invoke(self.callback, **ctx.params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/fardin/Frappe/practice-frappe/env/lib/python3.12/site-packages/click/core.py", line 788, in invoke
+    return __callback(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/fardin/Frappe/practice-frappe/apps/frappe/frappe/commands/scheduler.py", line 206, in start_worker
+    start_worker(
+  File "/home/fardin/Frappe/practice-frappe/apps/frappe/frappe/utils/background_jobs.py", line 320, in start_worker
+    worker.work(
+  File "/home/fardin/Frappe/practice-frappe/env/lib/python3.12/site-packages/rq/worker.py", line 458, in work
+    self.teardown()
+  File "/home/fardin/Frappe/practice-frappe/env/lib/python3.12/site-packages/rq/worker.py", line 1049, in teardown
+    self.unsubscribe()
+  File "/home/fardin/Frappe/practice-frappe/env/lib/python3.12/site-packages/rq/worker.py", line 626, in unsubscribe
+    self.pubsub.unsubscribe()
+  File "/home/fardin/Frappe/practice-frappe/env/lib/python3.12/site-packages/redis/client.py", line 982, in unsubscribe
+    return self.execute_command("UNSUBSCRIBE", *args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/fardin/Frappe/practice-frappe/env/lib/python3.12/site-packages/redis/client.py", line 798, in execute_command
+    self._execute(connection, connection.send_command, *args, **kwargs)
+  File "/home/fardin/Frappe/practice-frappe/env/lib/python3.12/site-packages/redis/client.py", line 841, in _execute
+    return conn.retry.call_with_retry(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/fardin/Frappe/practice-frappe/env/lib/python3.12/site-packages/redis/retry.py", line 65, in call_with_retry
+    fail(error)
+  File "/home/fardin/Frappe/practice-frappe/env/lib/python3.12/site-packages/redis/client.py", line 843, in <lambda>
+    lambda error: self._disconnect_raise_connect(conn, error),
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/fardin/Frappe/practice-frappe/env/lib/python3.12/site-packages/redis/client.py", line 830, in _disconnect_raise_connect
+    raise error
+  File "/home/fardin/Frappe/practice-frappe/env/lib/python3.12/site-packages/redis/retry.py", line 62, in call_with_retry
+    return do()
+           ^^^^
+  File "/home/fardin/Frappe/practice-frappe/env/lib/python3.12/site-packages/redis/client.py", line 842, in <lambda>
+    lambda: command(*args, **kwargs),
+            ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/fardin/Frappe/practice-frappe/env/lib/python3.12/site-packages/redis/connection.py", line 556, in send_command
+    self.send_packed_command(
+  File "/home/fardin/Frappe/practice-frappe/env/lib/python3.12/site-packages/redis/connection.py", line 526, in send_packed_command
+    self.connect()
+  File "/home/fardin/Frappe/practice-frappe/env/lib/python3.12/site-packages/redis/connection.py", line 363, in connect
+    raise ConnectionError(self._error_message(e))
+redis.exceptions.ConnectionError: Error 111 connecting to 127.0.0.1:11000. Connection refused.
+
+Error 111 connecting to 127.0.0.1:11000. Connection refused.
