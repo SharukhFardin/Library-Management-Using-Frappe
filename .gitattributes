@@ -1,7 +1,0 @@
-# Defines which languages are used for Frappe
-*.py linguist-language=Python
-*.js linguist-language=JavaScript
-
-# Exclude these files
-docs/* linguist-vendored
-build/* linguist-generated
