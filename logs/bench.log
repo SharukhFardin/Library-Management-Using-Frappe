@@ -26,3 +26,56 @@
 2024-12-23 10:25:51,449 INFO /home/fardin/.local/bin/bench build --app library_management
 2024-12-23 10:25:52,229 WARNING restart failed: Couldn't find supervisorctl in PATH
 2024-12-23 10:36:38,081 INFO /home/fardin/.local/bin/bench new-site library.test
+2024-12-23 11:42:46,396 INFO /home/fardin/.local/bin/bench start
+2024-12-23 11:42:46,533 INFO /home/fardin/.local/bin/bench schedule
+2024-12-23 11:42:46,533 INFO /home/fardin/.local/bin/bench watch
+2024-12-23 11:42:46,533 INFO /home/fardin/.local/bin/bench serve --port 8000
+2024-12-23 11:42:46,533 INFO /home/fardin/.local/bin/bench worker
+2024-12-23 11:43:57,654 INFO /home/fardin/.local/bin/bench use library.test
+2024-12-23 11:44:04,154 INFO /home/fardin/.local/bin/bench start
+2024-12-23 11:44:04,300 INFO /home/fardin/.local/bin/bench worker
+2024-12-23 11:44:04,300 INFO /home/fardin/.local/bin/bench serve --port 8000
+2024-12-23 11:44:04,300 INFO /home/fardin/.local/bin/bench watch
+2024-12-23 11:44:04,301 INFO /home/fardin/.local/bin/bench schedule
+2024-12-23 11:49:49,388 INFO /home/fardin/.local/bin/bench --site library.test add-to-hosts
+2024-12-23 11:50:47,168 INFO /home/fardin/.local/bin/bench start
+2024-12-23 11:50:47,306 INFO /home/fardin/.local/bin/bench schedule
+2024-12-23 11:50:47,306 INFO /home/fardin/.local/bin/bench worker
+2024-12-23 11:50:47,306 INFO /home/fardin/.local/bin/bench watch
+2024-12-23 11:50:47,307 INFO /home/fardin/.local/bin/bench serve --port 8000
+2024-12-23 11:52:08,561 INFO /home/fardin/.local/bin/bench --site library.test install-app library_management
+2024-12-23 11:52:37,309 INFO /home/fardin/.local/bin/bench --site library.test list-apps
+2024-12-23 11:53:10,311 INFO /home/fardin/.local/bin/bench start
+2024-12-23 11:53:10,451 INFO /home/fardin/.local/bin/bench watch
+2024-12-23 11:53:10,452 INFO /home/fardin/.local/bin/bench schedule
+2024-12-23 11:53:10,453 INFO /home/fardin/.local/bin/bench worker
+2024-12-23 11:53:10,453 INFO /home/fardin/.local/bin/bench serve --port 8000
+2024-12-23 11:56:05,803 INFO /home/fardin/.local/bin/bench set-config -g developer_mode true
+2024-12-23 11:56:11,193 INFO /home/fardin/.local/bin/bench start
+2024-12-23 11:56:11,330 INFO /home/fardin/.local/bin/bench serve --port 8000
+2024-12-23 11:56:11,330 INFO /home/fardin/.local/bin/bench watch
+2024-12-23 11:56:11,331 INFO /home/fardin/.local/bin/bench schedule
+2024-12-23 11:56:11,332 INFO /home/fardin/.local/bin/bench worker
+2024-12-23 12:00:01,786 INFO /home/fardin/.local/bin/bench --verbose --site all backup
+2024-12-23 12:00:27,051 INFO /home/fardin/.local/bin/bench version
+2024-12-23 12:01:53,269 INFO /home/fardin/.local/bin/bench --version
+2024-12-23 12:02:24,480 INFO /home/fardin/.local/bin/bench find .
+2024-12-23 12:06:20,456 INFO /home/fardin/.local/bin/bench --site library.test add-to-hosts
+2024-12-23 12:06:47,188 INFO /home/fardin/.local/bin/bench start
+2024-12-23 12:06:47,325 INFO /home/fardin/.local/bin/bench schedule
+2024-12-23 12:06:47,329 INFO /home/fardin/.local/bin/bench serve --port 8000
+2024-12-23 12:06:47,329 INFO /home/fardin/.local/bin/bench watch
+2024-12-23 12:06:47,332 INFO /home/fardin/.local/bin/bench worker
+2024-12-23 12:09:48,932 INFO /home/fardin/.local/bin/bench --help
+2024-12-23 12:14:31,050 INFO /home/fardin/.local/bin/bench set-config -g developer_mode true
+2024-12-23 12:14:37,256 INFO /home/fardin/.local/bin/bench start
+2024-12-23 12:14:37,392 INFO /home/fardin/.local/bin/bench worker
+2024-12-23 12:14:37,392 INFO /home/fardin/.local/bin/bench schedule
+2024-12-23 12:14:37,393 INFO /home/fardin/.local/bin/bench watch
+2024-12-23 12:14:37,393 INFO /home/fardin/.local/bin/bench serve --port 8000
+2024-12-23 12:25:39,205 INFO /home/fardin/.local/bin/bench --site library.test mariadb
+2024-12-23 14:13:15,335 INFO /home/fardin/.local/bin/bench start
+2024-12-23 14:13:15,472 INFO /home/fardin/.local/bin/bench schedule
+2024-12-23 14:13:15,472 INFO /home/fardin/.local/bin/bench serve --port 8000
+2024-12-23 14:13:15,472 INFO /home/fardin/.local/bin/bench watch
+2024-12-23 14:13:15,473 INFO /home/fardin/.local/bin/bench worker

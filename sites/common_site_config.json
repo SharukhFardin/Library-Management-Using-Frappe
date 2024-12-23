@@ -1,5 +1,7 @@
 {
  "background_workers": 1,
+ "default_site": "library.test",
+ "developer_mode": true,
  "file_watcher_port": 6787,
  "frappe_user": "fardin",
  "gunicorn_workers": 33,

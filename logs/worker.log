@@ -77,3 +77,922 @@ Traceback (most recent call last):
 redis.exceptions.ConnectionError: Error 111 connecting to 127.0.0.1:11000. Connection refused.
 
 Error 111 connecting to 127.0.0.1:11000. Connection refused.
+2024-12-23 11:42:46,719 Worker rq:worker:55df2209dfab4fb9823673d90144a001 started with PID 24925, version 1.16.2
+2024-12-23 11:42:46,719 Subscribing to channel rq:pubsub:55df2209dfab4fb9823673d90144a001
+2024-12-23 11:42:46,720 *** Listening on home-fardin-Frappe-practice-frappe:short, home-fardin-Frappe-practice-frappe:default, home-fardin-Frappe-practice-frappe:long...
+2024-12-23 11:42:46,720 Cleaning registries for queue: home-fardin-Frappe-practice-frappe:short
+2024-12-23 11:42:46,720 Cleaning registries for queue: home-fardin-Frappe-practice-frappe:default
+2024-12-23 11:42:46,721 Cleaning registries for queue: home-fardin-Frappe-practice-frappe:long
+2024-12-23 11:43:37,256 Worker 55df2209dfab4fb9823673d90144a001 [PID 24925]: warm shut down requested
+2024-12-23 11:43:37,258 Unsubscribing from channel rq:pubsub:55df2209dfab4fb9823673d90144a001
+Traceback (most recent call last):
+  File "/home/fardin/Frappe/practice-frappe/env/lib/python3.12/site-packages/redis/connection.py", line 357, in connect
+    sock = self.retry.call_with_retry(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/fardin/Frappe/practice-frappe/env/lib/python3.12/site-packages/redis/retry.py", line 62, in call_with_retry
+    return do()
+           ^^^^
+  File "/home/fardin/Frappe/practice-frappe/env/lib/python3.12/site-packages/redis/connection.py", line 358, in <lambda>
+    lambda: self._connect(), lambda error: self.disconnect(error)
+            ^^^^^^^^^^^^^^^
+  File "/home/fardin/Frappe/practice-frappe/env/lib/python3.12/site-packages/redis/connection.py", line 730, in _connect
+    raise err
+  File "/home/fardin/Frappe/practice-frappe/env/lib/python3.12/site-packages/redis/connection.py", line 718, in _connect
+    sock.connect(socket_address)
+ConnectionRefusedError: [Errno 111] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/fardin/Frappe/practice-frappe/apps/frappe/frappe/utils/bench_helper.py", line 48, in invoke
+    return super().invoke(ctx)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/home/fardin/Frappe/practice-frappe/env/lib/python3.12/site-packages/click/core.py", line 1697, in invoke
+    return _process_result(sub_ctx.command.invoke(sub_ctx))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/fardin/Frappe/practice-frappe/env/lib/python3.12/site-packages/click/core.py", line 1443, in invoke
+    return ctx.invoke(self.callback, **ctx.params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/fardin/Frappe/practice-frappe/env/lib/python3.12/site-packages/click/core.py", line 788, in invoke
+    return __callback(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/fardin/Frappe/practice-frappe/apps/frappe/frappe/commands/scheduler.py", line 206, in start_worker
+    start_worker(
+  File "/home/fardin/Frappe/practice-frappe/apps/frappe/frappe/utils/background_jobs.py", line 320, in start_worker
+    worker.work(
+  File "/home/fardin/Frappe/practice-frappe/env/lib/python3.12/site-packages/rq/worker.py", line 458, in work
+    self.teardown()
+  File "/home/fardin/Frappe/practice-frappe/env/lib/python3.12/site-packages/rq/worker.py", line 1049, in teardown
+    self.unsubscribe()
+  File "/home/fardin/Frappe/practice-frappe/env/lib/python3.12/site-packages/rq/worker.py", line 626, in unsubscribe
+    self.pubsub.unsubscribe()
+  File "/home/fardin/Frappe/practice-frappe/env/lib/python3.12/site-packages/redis/client.py", line 982, in unsubscribe
+    return self.execute_command("UNSUBSCRIBE", *args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/fardin/Frappe/practice-frappe/env/lib/python3.12/site-packages/redis/client.py", line 798, in execute_command
+    self._execute(connection, connection.send_command, *args, **kwargs)
+  File "/home/fardin/Frappe/practice-frappe/env/lib/python3.12/site-packages/redis/client.py", line 841, in _execute
+    return conn.retry.call_with_retry(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/fardin/Frappe/practice-frappe/env/lib/python3.12/site-packages/redis/retry.py", line 65, in call_with_retry
+    fail(error)
+  File "/home/fardin/Frappe/practice-frappe/env/lib/python3.12/site-packages/redis/client.py", line 843, in <lambda>
+    lambda error: self._disconnect_raise_connect(conn, error),
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/fardin/Frappe/practice-frappe/env/lib/python3.12/site-packages/redis/client.py", line 830, in _disconnect_raise_connect
+    raise error
+  File "/home/fardin/Frappe/practice-frappe/env/lib/python3.12/site-packages/redis/retry.py", line 62, in call_with_retry
+    return do()
+           ^^^^
+  File "/home/fardin/Frappe/practice-frappe/env/lib/python3.12/site-packages/redis/client.py", line 842, in <lambda>
+    lambda: command(*args, **kwargs),
+            ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/fardin/Frappe/practice-frappe/env/lib/python3.12/site-packages/redis/connection.py", line 556, in send_command
+    self.send_packed_command(
+  File "/home/fardin/Frappe/practice-frappe/env/lib/python3.12/site-packages/redis/connection.py", line 526, in send_packed_command
+    self.connect()
+  File "/home/fardin/Frappe/practice-frappe/env/lib/python3.12/site-packages/redis/connection.py", line 363, in connect
+    raise ConnectionError(self._error_message(e))
+redis.exceptions.ConnectionError: Error 111 connecting to 127.0.0.1:11000. Connection refused.
+
+Error 111 connecting to 127.0.0.1:11000. Connection refused.
+2024-12-23 11:44:04,481 Worker rq:worker:2af4ed55929a4e06b41543a825037116 started with PID 25752, version 1.16.2
+2024-12-23 11:44:04,481 Subscribing to channel rq:pubsub:2af4ed55929a4e06b41543a825037116
+2024-12-23 11:44:04,482 *** Listening on home-fardin-Frappe-practice-frappe:short, home-fardin-Frappe-practice-frappe:default, home-fardin-Frappe-practice-frappe:long...
+2024-12-23 11:44:04,482 Cleaning registries for queue: home-fardin-Frappe-practice-frappe:short
+2024-12-23 11:44:04,483 Cleaning registries for queue: home-fardin-Frappe-practice-frappe:default
+2024-12-23 11:44:04,483 Cleaning registries for queue: home-fardin-Frappe-practice-frappe:long
+2024-12-23 11:45:21,229 home-fardin-Frappe-practice-frappe:default: frappe.utils.background_jobs.execute_job(event=None, is_async=True, job_name='frappe.core.doctype.user.user.create_contact', kwargs={'user': <User: doctype=User sharukhfardin@gmail.com>, 'ignore_mandatory': ..., method='frappe.core.doctype.user.user.create_contact', site='library.test', user='Administrator') (library.test::225d73a0-076a-44ff-94af-73e23157cef1)
+2024-12-23 11:45:22,063 home-fardin-Frappe-practice-frappe:default: Job OK (library.test::225d73a0-076a-44ff-94af-73e23157cef1)
+2024-12-23 11:45:22,063 Result is kept for 600 seconds
+2024-12-23 11:45:22,066 home-fardin-Frappe-practice-frappe:default: frappe.utils.background_jobs.execute_job(event=None, is_async=True, job_name='frappe.core.doctype.user.user.update_gravatar', kwargs={'name': 'sharukhfardin@gmail.com'}, method='frappe.core.doctype.user.user.update_gravatar', site='library.test', user='Administrator') (library.test::a14fb1de-206d-4ba2-82f1-68c73cd40d90)
+2024-12-23 11:45:22,417 home-fardin-Frappe-practice-frappe:default: Job OK (library.test::a14fb1de-206d-4ba2-82f1-68c73cd40d90)
+2024-12-23 11:45:22,417 Result is kept for 600 seconds
+2024-12-23 11:48:01,083 home-fardin-Frappe-practice-frappe:default: frappe.utils.background_jobs.execute_job(event=None, is_async=True, job_name='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., kwargs={'job_type': 'frappe.website.doctype.web_page.web_page.check_publish_status..., method='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., site='library.test', user='Administrator') (library.test::scheduled_job::9r45bclqq7)
+2024-12-23 11:48:01,310 home-fardin-Frappe-practice-frappe:default: Job OK (library.test::scheduled_job::9r45bclqq7)
+2024-12-23 11:48:01,310 Result is kept for 600 seconds
+2024-12-23 11:48:01,313 home-fardin-Frappe-practice-frappe:default: frappe.utils.background_jobs.execute_job(event=None, is_async=True, job_name='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., kwargs={'job_type': 'frappe.core.doctype.prepared_report.prepared_report.expire_st..., method='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., site='library.test', user='Administrator') (library.test::scheduled_job::purf3o8f4g)
+2024-12-23 11:48:01,474 home-fardin-Frappe-practice-frappe:default: Job OK (library.test::scheduled_job::purf3o8f4g)
+2024-12-23 11:48:01,474 Result is kept for 600 seconds
+2024-12-23 11:48:01,477 home-fardin-Frappe-practice-frappe:default: frappe.utils.background_jobs.execute_job(event=None, is_async=True, job_name='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., kwargs={'job_type': 'frappe.website.doctype.personal_data_deletion_request.persona..., method='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., site='library.test', user='Administrator') (library.test::scheduled_job::m8h69ec0he)
+2024-12-23 11:48:01,672 home-fardin-Frappe-practice-frappe:default: Job OK (library.test::scheduled_job::m8h69ec0he)
+2024-12-23 11:48:01,672 Result is kept for 600 seconds
+2024-12-23 11:48:01,675 home-fardin-Frappe-practice-frappe:default: frappe.utils.background_jobs.execute_job(event=None, is_async=True, job_name='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., kwargs={'job_type': 'frappe.email.doctype.email_account.email_account.pull', 'sche..., method='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., site='library.test', user='Administrator') (library.test::scheduled_job::hr1hke2a9n)
+2024-12-23 11:48:01,857 home-fardin-Frappe-practice-frappe:default: Job OK (library.test::scheduled_job::hr1hke2a9n)
+2024-12-23 11:48:01,857 Result is kept for 600 seconds
+2024-12-23 11:48:01,860 home-fardin-Frappe-practice-frappe:default: frappe.utils.background_jobs.execute_job(event=None, is_async=True, job_name='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., kwargs={'job_type': 'frappe.automation.doctype.reminder.reminder.send_reminders', ..., method='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., site='library.test', user='Administrator') (library.test::scheduled_job::a7bs7m2kee)
+2024-12-23 11:48:02,037 home-fardin-Frappe-practice-frappe:default: Job OK (library.test::scheduled_job::a7bs7m2kee)
+2024-12-23 11:48:02,037 Result is kept for 600 seconds
+2024-12-23 11:48:02,039 home-fardin-Frappe-practice-frappe:default: frappe.utils.background_jobs.execute_job(event=None, is_async=True, job_name='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., kwargs={'job_type': 'frappe.model.utils.user_settings.sync_user_settings', 'schedu..., method='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., site='library.test', user='Administrator') (library.test::scheduled_job::n5afo0kh2c)
+2024-12-23 11:48:02,220 home-fardin-Frappe-practice-frappe:default: Job OK (library.test::scheduled_job::n5afo0kh2c)
+2024-12-23 11:48:02,220 Result is kept for 600 seconds
+2024-12-23 11:48:02,223 home-fardin-Frappe-practice-frappe:default: frappe.utils.background_jobs.execute_job(event=None, is_async=True, job_name='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., kwargs={'job_type': 'frappe.utils.global_search.sync_global_search', 'scheduled_jo..., method='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., site='library.test', user='Administrator') (library.test::scheduled_job::7j5bgnsnc9)
+2024-12-23 11:48:02,387 home-fardin-Frappe-practice-frappe:default: Job OK (library.test::scheduled_job::7j5bgnsnc9)
+2024-12-23 11:48:02,387 Result is kept for 600 seconds
+2024-12-23 11:48:02,390 home-fardin-Frappe-practice-frappe:default: frappe.utils.background_jobs.execute_job(event=None, is_async=True, job_name='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., kwargs={'job_type': 'frappe.oauth.delete_oauth2_data', 'scheduled_job_type': '1t84..., method='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., site='library.test', user='Administrator') (library.test::scheduled_job::1t84075plq)
+2024-12-23 11:48:02,562 home-fardin-Frappe-practice-frappe:default: Job OK (library.test::scheduled_job::1t84075plq)
+2024-12-23 11:48:02,562 Result is kept for 600 seconds
+2024-12-23 11:48:02,565 home-fardin-Frappe-practice-frappe:default: frappe.utils.background_jobs.execute_job(event=None, is_async=True, job_name='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., kwargs={'job_type': 'frappe.email.doctype.notification.notification.trigger_offset..., method='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., site='library.test', user='Administrator') (library.test::scheduled_job::etuapgq4v7)
+2024-12-23 11:48:02,740 home-fardin-Frappe-practice-frappe:default: Job OK (library.test::scheduled_job::etuapgq4v7)
+2024-12-23 11:48:02,740 Result is kept for 600 seconds
+2024-12-23 11:48:02,743 home-fardin-Frappe-practice-frappe:default: frappe.utils.background_jobs.execute_job(event=None, is_async=True, job_name='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., kwargs={'job_type': 'frappe.email.doctype.newsletter.newsletter.send_scheduled_ema..., method='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., site='library.test', user='Administrator') (library.test::scheduled_job::d9cp75q7p4)
+2024-12-23 11:48:02,957 home-fardin-Frappe-practice-frappe:default: Job OK (library.test::scheduled_job::d9cp75q7p4)
+2024-12-23 11:48:02,957 Result is kept for 600 seconds
+2024-12-23 11:48:02,960 home-fardin-Frappe-practice-frappe:default: frappe.utils.background_jobs.execute_job(event=None, is_async=True, job_name='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., kwargs={'job_type': 'frappe.deferred_insert.save_to_db', 'scheduled_job_type': 'ni..., method='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., site='library.test', user='Administrator') (library.test::scheduled_job::niupglfgc5)
+2024-12-23 11:48:03,140 home-fardin-Frappe-practice-frappe:default: Job OK (library.test::scheduled_job::niupglfgc5)
+2024-12-23 11:48:03,140 Result is kept for 600 seconds
+2024-12-23 11:48:03,143 home-fardin-Frappe-practice-frappe:default: frappe.utils.background_jobs.execute_job(event=None, is_async=True, job_name='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., kwargs={'job_type': 'frappe.email.queue.flush', 'scheduled_job_type': '4v1sbl4ch4'..., method='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., site='library.test', user='Administrator') (library.test::scheduled_job::4v1sbl4ch4)
+2024-12-23 11:48:03,347 home-fardin-Frappe-practice-frappe:default: Job OK (library.test::scheduled_job::4v1sbl4ch4)
+2024-12-23 11:48:03,347 Result is kept for 600 seconds
+2024-12-23 11:48:03,350 home-fardin-Frappe-practice-frappe:default: frappe.utils.background_jobs.execute_job(event=None, is_async=True, job_name='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., kwargs={'job_type': 'frappe.twofactor.delete_all_barcodes_for_users', 'scheduled_j..., method='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., site='library.test', user='Administrator') (library.test::scheduled_job::3kftimpqld)
+2024-12-23 11:48:03,516 home-fardin-Frappe-practice-frappe:default: Job OK (library.test::scheduled_job::3kftimpqld)
+2024-12-23 11:48:03,516 Result is kept for 600 seconds
+2024-12-23 11:48:03,519 home-fardin-Frappe-practice-frappe:default: frappe.utils.background_jobs.execute_job(event=None, is_async=True, job_name='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., kwargs={'job_type': 'frappe.integrations.doctype.google_calendar.google_calendar.s..., method='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., site='library.test', user='Administrator') (library.test::scheduled_job::iv4f0thmi6)
+2024-12-23 11:48:03,765 home-fardin-Frappe-practice-frappe:default: Job OK (library.test::scheduled_job::iv4f0thmi6)
+2024-12-23 11:48:03,765 Result is kept for 600 seconds
+2024-12-23 11:48:03,769 home-fardin-Frappe-practice-frappe:default: frappe.utils.background_jobs.execute_job(event=None, is_async=True, job_name='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., kwargs={'job_type': 'frappe.desk.page.backups.backups.delete_downloadable_backups'..., method='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., site='library.test', user='Administrator') (library.test::scheduled_job::0qnpqjbo7t)
+2024-12-23 11:48:03,947 home-fardin-Frappe-practice-frappe:default: Job OK (library.test::scheduled_job::0qnpqjbo7t)
+2024-12-23 11:48:03,947 Result is kept for 600 seconds
+2024-12-23 11:48:03,951 home-fardin-Frappe-practice-frappe:default: frappe.utils.background_jobs.execute_job(event=None, is_async=True, job_name='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., kwargs={'job_type': 'frappe.model.utils.link_count.update_link_count', 'scheduled_..., method='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., site='library.test', user='Administrator') (library.test::scheduled_job::p5d0if8mu5)
+2024-12-23 11:48:04,122 home-fardin-Frappe-practice-frappe:default: Job OK (library.test::scheduled_job::p5d0if8mu5)
+2024-12-23 11:48:04,122 Result is kept for 600 seconds
+2024-12-23 11:48:04,125 home-fardin-Frappe-practice-frappe:default: frappe.utils.background_jobs.execute_job(event=None, is_async=True, job_name='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., kwargs={'job_type': 'frappe.email.doctype.email_account.email_account.notify_unrep..., method='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., site='library.test', user='Administrator') (library.test::scheduled_job::0qqthanhco)
+2024-12-23 11:48:04,296 home-fardin-Frappe-practice-frappe:default: Job OK (library.test::scheduled_job::0qqthanhco)
+2024-12-23 11:48:04,296 Result is kept for 600 seconds
+2024-12-23 11:48:04,299 home-fardin-Frappe-practice-frappe:default: frappe.utils.background_jobs.execute_job(event=None, is_async=True, job_name='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., kwargs={'job_type': 'frappe.desk.form.document_follow.send_hourly_updates', 'sched..., method='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., site='library.test', user='Administrator') (library.test::scheduled_job::0anggdapat)
+2024-12-23 11:48:04,471 home-fardin-Frappe-practice-frappe:default: Job OK (library.test::scheduled_job::0anggdapat)
+2024-12-23 11:48:04,471 Result is kept for 600 seconds
+2024-12-23 11:48:04,474 home-fardin-Frappe-practice-frappe:default: frappe.utils.background_jobs.execute_job(event=None, is_async=True, job_name='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., kwargs={'job_type': 'frappe.monitor.flush', 'scheduled_job_type': 'a3fcpp0nfk'}, method='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., site='library.test', user='Administrator') (library.test::scheduled_job::a3fcpp0nfk)
+2024-12-23 11:48:04,638 home-fardin-Frappe-practice-frappe:default: Job OK (library.test::scheduled_job::a3fcpp0nfk)
+2024-12-23 11:48:04,638 Result is kept for 600 seconds
+2024-12-23 11:48:29,880 Worker 2af4ed55929a4e06b41543a825037116 [PID 25752]: warm shut down requested
+2024-12-23 11:48:29,883 Unsubscribing from channel rq:pubsub:2af4ed55929a4e06b41543a825037116
+2024-12-23 11:50:47,488 Worker rq:worker:ba3d88d0b6c349ce993d66c5999cf103 started with PID 28508, version 1.16.2
+2024-12-23 11:50:47,489 Subscribing to channel rq:pubsub:ba3d88d0b6c349ce993d66c5999cf103
+2024-12-23 11:50:47,489 *** Listening on home-fardin-Frappe-practice-frappe:short, home-fardin-Frappe-practice-frappe:default, home-fardin-Frappe-practice-frappe:long...
+2024-12-23 11:50:47,489 Cleaning registries for queue: home-fardin-Frappe-practice-frappe:short
+2024-12-23 11:50:47,490 Cleaning registries for queue: home-fardin-Frappe-practice-frappe:default
+2024-12-23 11:50:47,490 Cleaning registries for queue: home-fardin-Frappe-practice-frappe:long
+2024-12-23 11:52:01,079 home-fardin-Frappe-practice-frappe:default: frappe.utils.background_jobs.execute_job(event=None, is_async=True, job_name='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., kwargs={'job_type': 'frappe.automation.doctype.reminder.reminder.send_reminders', ..., method='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., site='library.test', user='Administrator') (library.test::scheduled_job::a7bs7m2kee)
+2024-12-23 11:52:01,292 home-fardin-Frappe-practice-frappe:default: Job OK (library.test::scheduled_job::a7bs7m2kee)
+2024-12-23 11:52:01,292 Result is kept for 600 seconds
+2024-12-23 11:52:01,295 home-fardin-Frappe-practice-frappe:default: frappe.utils.background_jobs.execute_job(event=None, is_async=True, job_name='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., kwargs={'job_type': 'frappe.email.queue.flush', 'scheduled_job_type': '4v1sbl4ch4'..., method='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., site='library.test', user='Administrator') (library.test::scheduled_job::4v1sbl4ch4)
+2024-12-23 11:52:01,501 home-fardin-Frappe-practice-frappe:default: Job OK (library.test::scheduled_job::4v1sbl4ch4)
+2024-12-23 11:52:01,501 Result is kept for 600 seconds
+2024-12-23 11:52:01,504 home-fardin-Frappe-practice-frappe:default: frappe.utils.background_jobs.execute_job(event=None, is_async=True, job_name='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., kwargs={'job_type': 'frappe.email.doctype.email_account.email_account.pull', 'sche..., method='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., site='library.test', user='Administrator') (library.test::scheduled_job::hr1hke2a9n)
+2024-12-23 11:52:01,686 home-fardin-Frappe-practice-frappe:default: Job OK (library.test::scheduled_job::hr1hke2a9n)
+2024-12-23 11:52:01,686 Result is kept for 600 seconds
+2024-12-23 11:52:01,689 home-fardin-Frappe-practice-frappe:default: frappe.utils.background_jobs.execute_job(event=None, is_async=True, job_name='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., kwargs={'job_type': 'frappe.email.doctype.notification.notification.trigger_offset..., method='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., site='library.test', user='Administrator') (library.test::scheduled_job::etuapgq4v7)
+2024-12-23 11:52:01,857 home-fardin-Frappe-practice-frappe:default: Job OK (library.test::scheduled_job::etuapgq4v7)
+2024-12-23 11:52:01,857 Result is kept for 600 seconds
+2024-12-23 11:52:01,861 home-fardin-Frappe-practice-frappe:default: frappe.utils.background_jobs.execute_job(event=None, is_async=True, job_name='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., kwargs={'job_type': 'frappe.monitor.flush', 'scheduled_job_type': 'a3fcpp0nfk'}, method='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., site='library.test', user='Administrator') (library.test::scheduled_job::a3fcpp0nfk)
+2024-12-23 11:52:02,032 home-fardin-Frappe-practice-frappe:default: Job OK (library.test::scheduled_job::a3fcpp0nfk)
+2024-12-23 11:52:02,032 Result is kept for 600 seconds
+2024-12-23 11:52:05,857 Worker ba3d88d0b6c349ce993d66c5999cf103 [PID 28508]: warm shut down requested
+2024-12-23 11:52:05,859 Unsubscribing from channel rq:pubsub:ba3d88d0b6c349ce993d66c5999cf103
+2024-12-23 11:53:10,635 Worker rq:worker:a92a0157436248c985b7219dcf921645 started with PID 30183, version 1.16.2
+2024-12-23 11:53:10,635 Subscribing to channel rq:pubsub:a92a0157436248c985b7219dcf921645
+2024-12-23 11:53:10,636 *** Listening on home-fardin-Frappe-practice-frappe:short, home-fardin-Frappe-practice-frappe:default, home-fardin-Frappe-practice-frappe:long...
+2024-12-23 11:53:10,636 Cleaning registries for queue: home-fardin-Frappe-practice-frappe:short
+2024-12-23 11:53:10,636 Cleaning registries for queue: home-fardin-Frappe-practice-frappe:default
+2024-12-23 11:53:10,637 Cleaning registries for queue: home-fardin-Frappe-practice-frappe:long
+2024-12-23 11:56:00,274 home-fardin-Frappe-practice-frappe:default: frappe.utils.background_jobs.execute_job(event=None, is_async=True, job_name='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., kwargs={'job_type': 'frappe.email.queue.flush', 'scheduled_job_type': '4v1sbl4ch4'..., method='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., site='library.test', user='Administrator') (library.test::scheduled_job::4v1sbl4ch4)
+2024-12-23 11:56:00,548 home-fardin-Frappe-practice-frappe:default: Job OK (library.test::scheduled_job::4v1sbl4ch4)
+2024-12-23 11:56:00,548 Result is kept for 600 seconds
+2024-12-23 11:56:00,551 home-fardin-Frappe-practice-frappe:default: frappe.utils.background_jobs.execute_job(event=None, is_async=True, job_name='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., kwargs={'job_type': 'frappe.automation.doctype.reminder.reminder.send_reminders', ..., method='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., site='library.test', user='Administrator') (library.test::scheduled_job::a7bs7m2kee)
+2024-12-23 11:56:00,742 home-fardin-Frappe-practice-frappe:default: Job OK (library.test::scheduled_job::a7bs7m2kee)
+2024-12-23 11:56:00,743 Result is kept for 600 seconds
+2024-12-23 11:56:00,746 home-fardin-Frappe-practice-frappe:default: frappe.utils.background_jobs.execute_job(event=None, is_async=True, job_name='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., kwargs={'job_type': 'frappe.email.doctype.notification.notification.trigger_offset..., method='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., site='library.test', user='Administrator') (library.test::scheduled_job::etuapgq4v7)
+2024-12-23 11:56:00,923 home-fardin-Frappe-practice-frappe:default: Job OK (library.test::scheduled_job::etuapgq4v7)
+2024-12-23 11:56:00,923 Result is kept for 600 seconds
+2024-12-23 11:56:00,926 home-fardin-Frappe-practice-frappe:default: frappe.utils.background_jobs.execute_job(event=None, is_async=True, job_name='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., kwargs={'job_type': 'frappe.monitor.flush', 'scheduled_job_type': 'a3fcpp0nfk'}, method='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., site='library.test', user='Administrator') (library.test::scheduled_job::a3fcpp0nfk)
+2024-12-23 11:56:01,091 home-fardin-Frappe-practice-frappe:default: Job OK (library.test::scheduled_job::a3fcpp0nfk)
+2024-12-23 11:56:01,091 Result is kept for 600 seconds
+2024-12-23 11:56:02,384 Worker a92a0157436248c985b7219dcf921645 [PID 30183]: warm shut down requested
+2024-12-23 11:56:02,387 Unsubscribing from channel rq:pubsub:a92a0157436248c985b7219dcf921645
+Traceback (most recent call last):
+  File "/home/fardin/Frappe/practice-frappe/env/lib/python3.12/site-packages/redis/connection.py", line 357, in connect
+    sock = self.retry.call_with_retry(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/fardin/Frappe/practice-frappe/env/lib/python3.12/site-packages/redis/retry.py", line 62, in call_with_retry
+    return do()
+           ^^^^
+  File "/home/fardin/Frappe/practice-frappe/env/lib/python3.12/site-packages/redis/connection.py", line 358, in <lambda>
+    lambda: self._connect(), lambda error: self.disconnect(error)
+            ^^^^^^^^^^^^^^^
+  File "/home/fardin/Frappe/practice-frappe/env/lib/python3.12/site-packages/redis/connection.py", line 730, in _connect
+    raise err
+  File "/home/fardin/Frappe/practice-frappe/env/lib/python3.12/site-packages/redis/connection.py", line 718, in _connect
+    sock.connect(socket_address)
+ConnectionRefusedError: [Errno 111] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/fardin/Frappe/practice-frappe/apps/frappe/frappe/utils/bench_helper.py", line 48, in invoke
+    return super().invoke(ctx)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/home/fardin/Frappe/practice-frappe/env/lib/python3.12/site-packages/click/core.py", line 1697, in invoke
+    return _process_result(sub_ctx.command.invoke(sub_ctx))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/fardin/Frappe/practice-frappe/env/lib/python3.12/site-packages/click/core.py", line 1443, in invoke
+    return ctx.invoke(self.callback, **ctx.params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/fardin/Frappe/practice-frappe/env/lib/python3.12/site-packages/click/core.py", line 788, in invoke
+    return __callback(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/fardin/Frappe/practice-frappe/apps/frappe/frappe/commands/scheduler.py", line 206, in start_worker
+    start_worker(
+  File "/home/fardin/Frappe/practice-frappe/apps/frappe/frappe/utils/background_jobs.py", line 320, in start_worker
+    worker.work(
+  File "/home/fardin/Frappe/practice-frappe/env/lib/python3.12/site-packages/rq/worker.py", line 458, in work
+    self.teardown()
+  File "/home/fardin/Frappe/practice-frappe/env/lib/python3.12/site-packages/rq/worker.py", line 1049, in teardown
+    self.unsubscribe()
+  File "/home/fardin/Frappe/practice-frappe/env/lib/python3.12/site-packages/rq/worker.py", line 626, in unsubscribe
+    self.pubsub.unsubscribe()
+  File "/home/fardin/Frappe/practice-frappe/env/lib/python3.12/site-packages/redis/client.py", line 982, in unsubscribe
+    return self.execute_command("UNSUBSCRIBE", *args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/fardin/Frappe/practice-frappe/env/lib/python3.12/site-packages/redis/client.py", line 798, in execute_command
+    self._execute(connection, connection.send_command, *args, **kwargs)
+  File "/home/fardin/Frappe/practice-frappe/env/lib/python3.12/site-packages/redis/client.py", line 841, in _execute
+    return conn.retry.call_with_retry(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/fardin/Frappe/practice-frappe/env/lib/python3.12/site-packages/redis/retry.py", line 65, in call_with_retry
+    fail(error)
+  File "/home/fardin/Frappe/practice-frappe/env/lib/python3.12/site-packages/redis/client.py", line 843, in <lambda>
+    lambda error: self._disconnect_raise_connect(conn, error),
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/fardin/Frappe/practice-frappe/env/lib/python3.12/site-packages/redis/client.py", line 830, in _disconnect_raise_connect
+    raise error
+  File "/home/fardin/Frappe/practice-frappe/env/lib/python3.12/site-packages/redis/retry.py", line 62, in call_with_retry
+    return do()
+           ^^^^
+  File "/home/fardin/Frappe/practice-frappe/env/lib/python3.12/site-packages/redis/client.py", line 842, in <lambda>
+    lambda: command(*args, **kwargs),
+            ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/fardin/Frappe/practice-frappe/env/lib/python3.12/site-packages/redis/connection.py", line 556, in send_command
+    self.send_packed_command(
+  File "/home/fardin/Frappe/practice-frappe/env/lib/python3.12/site-packages/redis/connection.py", line 526, in send_packed_command
+    self.connect()
+  File "/home/fardin/Frappe/practice-frappe/env/lib/python3.12/site-packages/redis/connection.py", line 363, in connect
+    raise ConnectionError(self._error_message(e))
+redis.exceptions.ConnectionError: Error 111 connecting to 127.0.0.1:11000. Connection refused.
+
+Error 111 connecting to 127.0.0.1:11000. Connection refused.
+2024-12-23 11:56:11,523 Worker rq:worker:82cddec1b750460f94ddfdc35954fb7b started with PID 31756, version 1.16.2
+2024-12-23 11:56:11,523 Subscribing to channel rq:pubsub:82cddec1b750460f94ddfdc35954fb7b
+2024-12-23 11:56:11,523 *** Listening on home-fardin-Frappe-practice-frappe:short, home-fardin-Frappe-practice-frappe:default, home-fardin-Frappe-practice-frappe:long...
+2024-12-23 11:56:11,523 Cleaning registries for queue: home-fardin-Frappe-practice-frappe:short
+2024-12-23 11:56:11,524 Cleaning registries for queue: home-fardin-Frappe-practice-frappe:default
+2024-12-23 11:56:11,524 Cleaning registries for queue: home-fardin-Frappe-practice-frappe:long
+2024-12-23 12:00:00,118 home-fardin-Frappe-practice-frappe:default: frappe.utils.background_jobs.execute_job(event=None, is_async=True, job_name='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., kwargs={'job_type': 'frappe.website.doctype.web_page.web_page.check_publish_status..., method='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., site='library.test', user='Administrator') (library.test::scheduled_job::9r45bclqq7)
+2024-12-23 12:00:00,357 home-fardin-Frappe-practice-frappe:default: Job OK (library.test::scheduled_job::9r45bclqq7)
+2024-12-23 12:00:00,357 Result is kept for 600 seconds
+2024-12-23 12:00:00,361 home-fardin-Frappe-practice-frappe:default: frappe.utils.background_jobs.execute_job(event=None, is_async=True, job_name='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., kwargs={'job_type': 'frappe.integrations.doctype.google_calendar.google_calendar.s..., method='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., site='library.test', user='Administrator') (library.test::scheduled_job::iv4f0thmi6)
+2024-12-23 12:00:00,615 home-fardin-Frappe-practice-frappe:default: Job OK (library.test::scheduled_job::iv4f0thmi6)
+2024-12-23 12:00:00,615 Result is kept for 600 seconds
+2024-12-23 12:00:00,619 home-fardin-Frappe-practice-frappe:default: frappe.utils.background_jobs.execute_job(event=None, is_async=True, job_name='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., kwargs={'job_type': 'frappe.deferred_insert.save_to_db', 'scheduled_job_type': 'ni..., method='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., site='library.test', user='Administrator') (library.test::scheduled_job::niupglfgc5)
+2024-12-23 12:00:00,812 home-fardin-Frappe-practice-frappe:default: Job OK (library.test::scheduled_job::niupglfgc5)
+2024-12-23 12:00:00,812 Result is kept for 600 seconds
+2024-12-23 12:00:00,816 home-fardin-Frappe-practice-frappe:default: frappe.utils.background_jobs.execute_job(event=None, is_async=True, job_name='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., kwargs={'job_type': 'frappe.email.doctype.email_account.email_account.pull', 'sche..., method='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., site='library.test', user='Administrator') (library.test::scheduled_job::hr1hke2a9n)
+2024-12-23 12:00:00,991 home-fardin-Frappe-practice-frappe:default: Job OK (library.test::scheduled_job::hr1hke2a9n)
+2024-12-23 12:00:00,991 Result is kept for 600 seconds
+2024-12-23 12:00:00,994 home-fardin-Frappe-practice-frappe:default: frappe.utils.background_jobs.execute_job(event=None, is_async=True, job_name='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., kwargs={'job_type': 'frappe.email.doctype.email_account.email_account.notify_unrep..., method='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., site='library.test', user='Administrator') (library.test::scheduled_job::0qqthanhco)
+2024-12-23 12:00:01,169 home-fardin-Frappe-practice-frappe:default: Job OK (library.test::scheduled_job::0qqthanhco)
+2024-12-23 12:00:01,169 Result is kept for 600 seconds
+2024-12-23 12:00:01,173 home-fardin-Frappe-practice-frappe:default: frappe.utils.background_jobs.execute_job(event=None, is_async=True, job_name='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., kwargs={'job_type': 'frappe.monitor.flush', 'scheduled_job_type': 'a3fcpp0nfk'}, method='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., site='library.test', user='Administrator') (library.test::scheduled_job::a3fcpp0nfk)
+2024-12-23 12:00:01,338 home-fardin-Frappe-practice-frappe:default: Job OK (library.test::scheduled_job::a3fcpp0nfk)
+2024-12-23 12:00:01,339 Result is kept for 600 seconds
+2024-12-23 12:00:01,343 home-fardin-Frappe-practice-frappe:default: frappe.utils.background_jobs.execute_job(event=None, is_async=True, job_name='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., kwargs={'job_type': 'frappe.desk.page.backups.backups.delete_downloadable_backups'..., method='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., site='library.test', user='Administrator') (library.test::scheduled_job::0qnpqjbo7t)
+2024-12-23 12:00:01,523 home-fardin-Frappe-practice-frappe:default: Job OK (library.test::scheduled_job::0qnpqjbo7t)
+2024-12-23 12:00:01,523 Result is kept for 600 seconds
+2024-12-23 12:00:01,526 home-fardin-Frappe-practice-frappe:default: frappe.utils.background_jobs.execute_job(event=None, is_async=True, job_name='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., kwargs={'job_type': 'frappe.automation.doctype.reminder.reminder.send_reminders', ..., method='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., site='library.test', user='Administrator') (library.test::scheduled_job::a7bs7m2kee)
+2024-12-23 12:00:01,704 home-fardin-Frappe-practice-frappe:default: Job OK (library.test::scheduled_job::a7bs7m2kee)
+2024-12-23 12:00:01,704 Result is kept for 600 seconds
+2024-12-23 12:00:01,708 home-fardin-Frappe-practice-frappe:default: frappe.utils.background_jobs.execute_job(event=None, is_async=True, job_name='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., kwargs={'job_type': 'frappe.utils.global_search.sync_global_search', 'scheduled_jo..., method='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., site='library.test', user='Administrator') (library.test::scheduled_job::7j5bgnsnc9)
+2024-12-23 12:00:01,890 home-fardin-Frappe-practice-frappe:default: Job OK (library.test::scheduled_job::7j5bgnsnc9)
+2024-12-23 12:00:01,890 Result is kept for 600 seconds
+2024-12-23 12:00:01,893 home-fardin-Frappe-practice-frappe:default: frappe.utils.background_jobs.execute_job(event=None, is_async=True, job_name='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., kwargs={'job_type': 'frappe.model.utils.link_count.update_link_count', 'scheduled_..., method='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., site='library.test', user='Administrator') (library.test::scheduled_job::p5d0if8mu5)
+2024-12-23 12:00:02,084 home-fardin-Frappe-practice-frappe:default: Job OK (library.test::scheduled_job::p5d0if8mu5)
+2024-12-23 12:00:02,084 Result is kept for 600 seconds
+2024-12-23 12:00:02,087 home-fardin-Frappe-practice-frappe:default: frappe.utils.background_jobs.execute_job(event=None, is_async=True, job_name='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., kwargs={'job_type': 'frappe.email.queue.flush', 'scheduled_job_type': '4v1sbl4ch4'..., method='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., site='library.test', user='Administrator') (library.test::scheduled_job::4v1sbl4ch4)
+2024-12-23 12:00:02,334 home-fardin-Frappe-practice-frappe:default: Job OK (library.test::scheduled_job::4v1sbl4ch4)
+2024-12-23 12:00:02,335 Result is kept for 600 seconds
+2024-12-23 12:00:02,338 home-fardin-Frappe-practice-frappe:default: frappe.utils.background_jobs.execute_job(event=None, is_async=True, job_name='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., kwargs={'job_type': 'frappe.twofactor.delete_all_barcodes_for_users', 'scheduled_j..., method='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., site='library.test', user='Administrator') (library.test::scheduled_job::3kftimpqld)
+2024-12-23 12:00:02,535 home-fardin-Frappe-practice-frappe:default: Job OK (library.test::scheduled_job::3kftimpqld)
+2024-12-23 12:00:02,535 Result is kept for 600 seconds
+2024-12-23 12:00:02,538 home-fardin-Frappe-practice-frappe:default: frappe.utils.background_jobs.execute_job(event=None, is_async=True, job_name='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., kwargs={'job_type': 'frappe.model.utils.user_settings.sync_user_settings', 'schedu..., method='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., site='library.test', user='Administrator') (library.test::scheduled_job::n5afo0kh2c)
+2024-12-23 12:00:02,731 home-fardin-Frappe-practice-frappe:default: Job OK (library.test::scheduled_job::n5afo0kh2c)
+2024-12-23 12:00:02,731 Result is kept for 600 seconds
+2024-12-23 12:00:02,734 home-fardin-Frappe-practice-frappe:default: frappe.utils.background_jobs.execute_job(event=None, is_async=True, job_name='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., kwargs={'job_type': 'frappe.email.doctype.newsletter.newsletter.send_scheduled_ema..., method='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., site='library.test', user='Administrator') (library.test::scheduled_job::d9cp75q7p4)
+2024-12-23 12:00:02,953 home-fardin-Frappe-practice-frappe:default: Job OK (library.test::scheduled_job::d9cp75q7p4)
+2024-12-23 12:00:02,953 Result is kept for 600 seconds
+2024-12-23 12:00:02,956 home-fardin-Frappe-practice-frappe:default: frappe.utils.background_jobs.execute_job(event=None, is_async=True, job_name='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., kwargs={'job_type': 'frappe.email.doctype.notification.notification.trigger_offset..., method='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., site='library.test', user='Administrator') (library.test::scheduled_job::etuapgq4v7)
+2024-12-23 12:00:03,125 home-fardin-Frappe-practice-frappe:default: Job OK (library.test::scheduled_job::etuapgq4v7)
+2024-12-23 12:00:03,125 Result is kept for 600 seconds
+2024-12-23 12:00:03,129 home-fardin-Frappe-practice-frappe:default: frappe.utils.background_jobs.execute_job(event=None, is_async=True, job_name='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., kwargs={'job_type': 'frappe.oauth.delete_oauth2_data', 'scheduled_job_type': '1t84..., method='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., site='library.test', user='Administrator') (library.test::scheduled_job::1t84075plq)
+2024-12-23 12:00:03,298 home-fardin-Frappe-practice-frappe:default: Job OK (library.test::scheduled_job::1t84075plq)
+2024-12-23 12:00:03,298 Result is kept for 600 seconds
+2024-12-23 12:00:03,301 home-fardin-Frappe-practice-frappe:default: frappe.utils.background_jobs.execute_job(event=None, is_async=True, job_name='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., kwargs={'job_type': 'frappe.desk.form.document_follow.send_hourly_updates', 'sched..., method='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., site='library.test', user='Administrator') (library.test::scheduled_job::0anggdapat)
+2024-12-23 12:00:03,475 home-fardin-Frappe-practice-frappe:default: Job OK (library.test::scheduled_job::0anggdapat)
+2024-12-23 12:00:03,475 Result is kept for 600 seconds
+2024-12-23 12:00:03,478 home-fardin-Frappe-practice-frappe:default: frappe.utils.background_jobs.execute_job(event=None, is_async=True, job_name='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., kwargs={'job_type': 'frappe.website.doctype.personal_data_deletion_request.persona..., method='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., site='library.test', user='Administrator') (library.test::scheduled_job::m8h69ec0he)
+2024-12-23 12:00:03,664 home-fardin-Frappe-practice-frappe:default: Job OK (library.test::scheduled_job::m8h69ec0he)
+2024-12-23 12:00:03,664 Result is kept for 600 seconds
+2024-12-23 12:00:17,824 Worker 82cddec1b750460f94ddfdc35954fb7b [PID 31756]: warm shut down requested
+2024-12-23 12:00:17,827 Unsubscribing from channel rq:pubsub:82cddec1b750460f94ddfdc35954fb7b
+Traceback (most recent call last):
+  File "/home/fardin/Frappe/practice-frappe/env/lib/python3.12/site-packages/redis/connection.py", line 357, in connect
+    sock = self.retry.call_with_retry(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/fardin/Frappe/practice-frappe/env/lib/python3.12/site-packages/redis/retry.py", line 62, in call_with_retry
+    return do()
+           ^^^^
+  File "/home/fardin/Frappe/practice-frappe/env/lib/python3.12/site-packages/redis/connection.py", line 358, in <lambda>
+    lambda: self._connect(), lambda error: self.disconnect(error)
+            ^^^^^^^^^^^^^^^
+  File "/home/fardin/Frappe/practice-frappe/env/lib/python3.12/site-packages/redis/connection.py", line 730, in _connect
+    raise err
+  File "/home/fardin/Frappe/practice-frappe/env/lib/python3.12/site-packages/redis/connection.py", line 718, in _connect
+    sock.connect(socket_address)
+ConnectionRefusedError: [Errno 111] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/fardin/Frappe/practice-frappe/apps/frappe/frappe/utils/bench_helper.py", line 48, in invoke
+    return super().invoke(ctx)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/home/fardin/Frappe/practice-frappe/env/lib/python3.12/site-packages/click/core.py", line 1697, in invoke
+    return _process_result(sub_ctx.command.invoke(sub_ctx))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/fardin/Frappe/practice-frappe/env/lib/python3.12/site-packages/click/core.py", line 1443, in invoke
+    return ctx.invoke(self.callback, **ctx.params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/fardin/Frappe/practice-frappe/env/lib/python3.12/site-packages/click/core.py", line 788, in invoke
+    return __callback(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/fardin/Frappe/practice-frappe/apps/frappe/frappe/commands/scheduler.py", line 206, in start_worker
+    start_worker(
+  File "/home/fardin/Frappe/practice-frappe/apps/frappe/frappe/utils/background_jobs.py", line 320, in start_worker
+    worker.work(
+  File "/home/fardin/Frappe/practice-frappe/env/lib/python3.12/site-packages/rq/worker.py", line 458, in work
+    self.teardown()
+  File "/home/fardin/Frappe/practice-frappe/env/lib/python3.12/site-packages/rq/worker.py", line 1049, in teardown
+    self.unsubscribe()
+  File "/home/fardin/Frappe/practice-frappe/env/lib/python3.12/site-packages/rq/worker.py", line 626, in unsubscribe
+    self.pubsub.unsubscribe()
+  File "/home/fardin/Frappe/practice-frappe/env/lib/python3.12/site-packages/redis/client.py", line 982, in unsubscribe
+    return self.execute_command("UNSUBSCRIBE", *args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/fardin/Frappe/practice-frappe/env/lib/python3.12/site-packages/redis/client.py", line 798, in execute_command
+    self._execute(connection, connection.send_command, *args, **kwargs)
+  File "/home/fardin/Frappe/practice-frappe/env/lib/python3.12/site-packages/redis/client.py", line 841, in _execute
+    return conn.retry.call_with_retry(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/fardin/Frappe/practice-frappe/env/lib/python3.12/site-packages/redis/retry.py", line 65, in call_with_retry
+    fail(error)
+  File "/home/fardin/Frappe/practice-frappe/env/lib/python3.12/site-packages/redis/client.py", line 843, in <lambda>
+    lambda error: self._disconnect_raise_connect(conn, error),
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/fardin/Frappe/practice-frappe/env/lib/python3.12/site-packages/redis/client.py", line 830, in _disconnect_raise_connect
+    raise error
+  File "/home/fardin/Frappe/practice-frappe/env/lib/python3.12/site-packages/redis/retry.py", line 62, in call_with_retry
+    return do()
+           ^^^^
+  File "/home/fardin/Frappe/practice-frappe/env/lib/python3.12/site-packages/redis/client.py", line 842, in <lambda>
+    lambda: command(*args, **kwargs),
+            ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/fardin/Frappe/practice-frappe/env/lib/python3.12/site-packages/redis/connection.py", line 556, in send_command
+    self.send_packed_command(
+  File "/home/fardin/Frappe/practice-frappe/env/lib/python3.12/site-packages/redis/connection.py", line 526, in send_packed_command
+    self.connect()
+  File "/home/fardin/Frappe/practice-frappe/env/lib/python3.12/site-packages/redis/connection.py", line 363, in connect
+    raise ConnectionError(self._error_message(e))
+redis.exceptions.ConnectionError: Error 111 connecting to 127.0.0.1:11000. Connection refused.
+
+Error 111 connecting to 127.0.0.1:11000. Connection refused.
+2024-12-23 12:06:47,512 Worker rq:worker:c0b441df295240ba9aa677b7573cb9ed started with PID 34306, version 1.16.2
+2024-12-23 12:06:47,513 Subscribing to channel rq:pubsub:c0b441df295240ba9aa677b7573cb9ed
+2024-12-23 12:06:47,513 *** Listening on home-fardin-Frappe-practice-frappe:short, home-fardin-Frappe-practice-frappe:default, home-fardin-Frappe-practice-frappe:long...
+2024-12-23 12:06:47,514 Cleaning registries for queue: home-fardin-Frappe-practice-frappe:short
+2024-12-23 12:06:47,514 Cleaning registries for queue: home-fardin-Frappe-practice-frappe:default
+2024-12-23 12:06:47,514 Cleaning registries for queue: home-fardin-Frappe-practice-frappe:long
+2024-12-23 12:08:00,112 home-fardin-Frappe-practice-frappe:default: frappe.utils.background_jobs.execute_job(event=None, is_async=True, job_name='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., kwargs={'job_type': 'frappe.monitor.flush', 'scheduled_job_type': 'a3fcpp0nfk'}, method='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., site='library.test', user='Administrator') (library.test::scheduled_job::a3fcpp0nfk)
+2024-12-23 12:08:00,321 home-fardin-Frappe-practice-frappe:default: Job OK (library.test::scheduled_job::a3fcpp0nfk)
+2024-12-23 12:08:00,322 Result is kept for 600 seconds
+2024-12-23 12:08:00,325 home-fardin-Frappe-practice-frappe:default: frappe.utils.background_jobs.execute_job(event=None, is_async=True, job_name='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., kwargs={'job_type': 'frappe.email.doctype.notification.notification.trigger_offset..., method='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., site='library.test', user='Administrator') (library.test::scheduled_job::etuapgq4v7)
+2024-12-23 12:08:00,490 home-fardin-Frappe-practice-frappe:default: Job OK (library.test::scheduled_job::etuapgq4v7)
+2024-12-23 12:08:00,490 Result is kept for 600 seconds
+2024-12-23 12:08:00,493 home-fardin-Frappe-practice-frappe:default: frappe.utils.background_jobs.execute_job(event=None, is_async=True, job_name='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., kwargs={'job_type': 'frappe.email.queue.flush', 'scheduled_job_type': '4v1sbl4ch4'..., method='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., site='library.test', user='Administrator') (library.test::scheduled_job::4v1sbl4ch4)
+2024-12-23 12:08:00,698 home-fardin-Frappe-practice-frappe:default: Job OK (library.test::scheduled_job::4v1sbl4ch4)
+2024-12-23 12:08:00,698 Result is kept for 600 seconds
+2024-12-23 12:08:00,701 home-fardin-Frappe-practice-frappe:default: frappe.utils.background_jobs.execute_job(event=None, is_async=True, job_name='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., kwargs={'job_type': 'frappe.automation.doctype.reminder.reminder.send_reminders', ..., method='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., site='library.test', user='Administrator') (library.test::scheduled_job::a7bs7m2kee)
+2024-12-23 12:08:00,877 home-fardin-Frappe-practice-frappe:default: Job OK (library.test::scheduled_job::a7bs7m2kee)
+2024-12-23 12:08:00,877 Result is kept for 600 seconds
+2024-12-23 12:09:43,153 Worker c0b441df295240ba9aa677b7573cb9ed [PID 34306]: warm shut down requested
+Traceback (most recent call last):
+  File "/home/fardin/Frappe/practice-frappe/env/lib/python3.12/site-packages/redis/connection.py", line 592, in read_response
+    response = self._parser.read_response(disable_decoding=disable_decoding)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/fardin/Frappe/practice-frappe/env/lib/python3.12/site-packages/redis/_parsers/hiredis.py", line 128, in read_response
+    self.read_from_socket()
+  File "/home/fardin/Frappe/practice-frappe/env/lib/python3.12/site-packages/redis/_parsers/hiredis.py", line 88, in read_from_socket
+    bufflen = self._sock.recv_into(self._buffer)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ConnectionResetError: [Errno 104] Connection reset by peer
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/fardin/Frappe/practice-frappe/apps/frappe/frappe/utils/bench_helper.py", line 48, in invoke
+    return super().invoke(ctx)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/home/fardin/Frappe/practice-frappe/env/lib/python3.12/site-packages/click/core.py", line 1697, in invoke
+    return _process_result(sub_ctx.command.invoke(sub_ctx))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/fardin/Frappe/practice-frappe/env/lib/python3.12/site-packages/click/core.py", line 1443, in invoke
+    return ctx.invoke(self.callback, **ctx.params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/fardin/Frappe/practice-frappe/env/lib/python3.12/site-packages/click/core.py", line 788, in invoke
+    return __callback(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/fardin/Frappe/practice-frappe/apps/frappe/frappe/commands/scheduler.py", line 206, in start_worker
+    start_worker(
+  File "/home/fardin/Frappe/practice-frappe/apps/frappe/frappe/utils/background_jobs.py", line 320, in start_worker
+    worker.work(
+  File "/home/fardin/Frappe/practice-frappe/env/lib/python3.12/site-packages/rq/worker.py", line 458, in work
+    self.teardown()
+  File "/home/fardin/Frappe/practice-frappe/env/lib/python3.12/site-packages/rq/worker.py", line 1048, in teardown
+    self.register_death()
+  File "/home/fardin/Frappe/practice-frappe/env/lib/python3.12/site-packages/rq/worker.py", line 834, in register_death
+    p.execute()
+  File "/home/fardin/Frappe/practice-frappe/env/lib/python3.12/site-packages/redis/client.py", line 1524, in execute
+    conn = self.connection_pool.get_connection("MULTI", self.shard_hint)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/fardin/Frappe/practice-frappe/env/lib/python3.12/site-packages/redis/connection.py", line 1422, in get_connection
+    connection.connect()
+  File "/home/fardin/Frappe/practice-frappe/env/lib/python3.12/site-packages/redis/connection.py", line 369, in connect
+    self.on_connect()
+  File "/home/fardin/Frappe/practice-frappe/env/lib/python3.12/site-packages/redis/connection.py", line 471, in on_connect
+    self.read_response()
+  File "/home/fardin/Frappe/practice-frappe/env/lib/python3.12/site-packages/redis/connection.py", line 600, in read_response
+    raise ConnectionError(
+redis.exceptions.ConnectionError: Error while reading from 127.0.0.1:11000 : (104, 'Connection reset by peer')
+
+Error while reading from 127.0.0.1:11000 : (104, 'Connection reset by peer')
+2024-12-23 12:14:37,575 Worker rq:worker:193c8d0a7a724cc1a5c7e4a33266694d started with PID 35869, version 1.16.2
+2024-12-23 12:14:37,575 Subscribing to channel rq:pubsub:193c8d0a7a724cc1a5c7e4a33266694d
+2024-12-23 12:14:37,576 *** Listening on home-fardin-Frappe-practice-frappe:short, home-fardin-Frappe-practice-frappe:default, home-fardin-Frappe-practice-frappe:long...
+2024-12-23 12:14:37,576 Cleaning registries for queue: home-fardin-Frappe-practice-frappe:short
+2024-12-23 12:14:37,576 Cleaning registries for queue: home-fardin-Frappe-practice-frappe:default
+2024-12-23 12:14:37,577 Cleaning registries for queue: home-fardin-Frappe-practice-frappe:long
+2024-12-23 12:16:00,205 home-fardin-Frappe-practice-frappe:default: frappe.utils.background_jobs.execute_job(event=None, is_async=True, job_name='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., kwargs={'job_type': 'frappe.utils.global_search.sync_global_search', 'scheduled_jo..., method='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., site='library.test', user='Administrator') (library.test::scheduled_job::7j5bgnsnc9)
+2024-12-23 12:16:00,424 home-fardin-Frappe-practice-frappe:default: Job OK (library.test::scheduled_job::7j5bgnsnc9)
+2024-12-23 12:16:00,424 Result is kept for 600 seconds
+2024-12-23 12:16:00,427 home-fardin-Frappe-practice-frappe:default: frappe.utils.background_jobs.execute_job(event=None, is_async=True, job_name='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., kwargs={'job_type': 'frappe.email.queue.flush', 'scheduled_job_type': '4v1sbl4ch4'..., method='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., site='library.test', user='Administrator') (library.test::scheduled_job::4v1sbl4ch4)
+2024-12-23 12:16:00,634 home-fardin-Frappe-practice-frappe:default: Job OK (library.test::scheduled_job::4v1sbl4ch4)
+2024-12-23 12:16:00,634 Result is kept for 600 seconds
+2024-12-23 12:16:00,637 home-fardin-Frappe-practice-frappe:default: frappe.utils.background_jobs.execute_job(event=None, is_async=True, job_name='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., kwargs={'job_type': 'frappe.website.doctype.web_page.web_page.check_publish_status..., method='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., site='library.test', user='Administrator') (library.test::scheduled_job::9r45bclqq7)
+2024-12-23 12:16:00,845 home-fardin-Frappe-practice-frappe:default: Job OK (library.test::scheduled_job::9r45bclqq7)
+2024-12-23 12:16:00,845 Result is kept for 600 seconds
+2024-12-23 12:16:00,849 home-fardin-Frappe-practice-frappe:default: frappe.utils.background_jobs.execute_job(event=None, is_async=True, job_name='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., kwargs={'job_type': 'frappe.email.doctype.email_account.email_account.pull', 'sche..., method='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., site='library.test', user='Administrator') (library.test::scheduled_job::hr1hke2a9n)
+2024-12-23 12:16:01,030 home-fardin-Frappe-practice-frappe:default: Job OK (library.test::scheduled_job::hr1hke2a9n)
+2024-12-23 12:16:01,030 Result is kept for 600 seconds
+2024-12-23 12:16:01,033 home-fardin-Frappe-practice-frappe:default: frappe.utils.background_jobs.execute_job(event=None, is_async=True, job_name='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., kwargs={'job_type': 'frappe.twofactor.delete_all_barcodes_for_users', 'scheduled_j..., method='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., site='library.test', user='Administrator') (library.test::scheduled_job::3kftimpqld)
+2024-12-23 12:16:01,218 home-fardin-Frappe-practice-frappe:default: Job OK (library.test::scheduled_job::3kftimpqld)
+2024-12-23 12:16:01,219 Result is kept for 600 seconds
+2024-12-23 12:16:01,221 home-fardin-Frappe-practice-frappe:default: frappe.utils.background_jobs.execute_job(event=None, is_async=True, job_name='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., kwargs={'job_type': 'frappe.automation.doctype.reminder.reminder.send_reminders', ..., method='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., site='library.test', user='Administrator') (library.test::scheduled_job::a7bs7m2kee)
+2024-12-23 12:16:01,398 home-fardin-Frappe-practice-frappe:default: Job OK (library.test::scheduled_job::a7bs7m2kee)
+2024-12-23 12:16:01,398 Result is kept for 600 seconds
+2024-12-23 12:16:01,401 home-fardin-Frappe-practice-frappe:default: frappe.utils.background_jobs.execute_job(event=None, is_async=True, job_name='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., kwargs={'job_type': 'frappe.monitor.flush', 'scheduled_job_type': 'a3fcpp0nfk'}, method='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., site='library.test', user='Administrator') (library.test::scheduled_job::a3fcpp0nfk)
+2024-12-23 12:16:01,568 home-fardin-Frappe-practice-frappe:default: Job OK (library.test::scheduled_job::a3fcpp0nfk)
+2024-12-23 12:16:01,568 Result is kept for 600 seconds
+2024-12-23 12:16:01,571 home-fardin-Frappe-practice-frappe:default: frappe.utils.background_jobs.execute_job(event=None, is_async=True, job_name='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., kwargs={'job_type': 'frappe.oauth.delete_oauth2_data', 'scheduled_job_type': '1t84..., method='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., site='library.test', user='Administrator') (library.test::scheduled_job::1t84075plq)
+2024-12-23 12:16:01,744 home-fardin-Frappe-practice-frappe:default: Job OK (library.test::scheduled_job::1t84075plq)
+2024-12-23 12:16:01,744 Result is kept for 600 seconds
+2024-12-23 12:16:01,747 home-fardin-Frappe-practice-frappe:default: frappe.utils.background_jobs.execute_job(event=None, is_async=True, job_name='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., kwargs={'job_type': 'frappe.deferred_insert.save_to_db', 'scheduled_job_type': 'ni..., method='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., site='library.test', user='Administrator') (library.test::scheduled_job::niupglfgc5)
+2024-12-23 12:16:01,912 home-fardin-Frappe-practice-frappe:default: Job OK (library.test::scheduled_job::niupglfgc5)
+2024-12-23 12:16:01,912 Result is kept for 600 seconds
+2024-12-23 12:16:01,915 home-fardin-Frappe-practice-frappe:default: frappe.utils.background_jobs.execute_job(event=None, is_async=True, job_name='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., kwargs={'job_type': 'frappe.email.doctype.email_account.email_account.notify_unrep..., method='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., site='library.test', user='Administrator') (library.test::scheduled_job::0qqthanhco)
+2024-12-23 12:16:02,102 home-fardin-Frappe-practice-frappe:default: Job OK (library.test::scheduled_job::0qqthanhco)
+2024-12-23 12:16:02,102 Result is kept for 600 seconds
+2024-12-23 12:16:02,105 home-fardin-Frappe-practice-frappe:default: frappe.utils.background_jobs.execute_job(event=None, is_async=True, job_name='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., kwargs={'job_type': 'frappe.email.doctype.notification.notification.trigger_offset..., method='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., site='library.test', user='Administrator') (library.test::scheduled_job::etuapgq4v7)
+2024-12-23 12:16:02,279 home-fardin-Frappe-practice-frappe:default: Job OK (library.test::scheduled_job::etuapgq4v7)
+2024-12-23 12:16:02,279 Result is kept for 600 seconds
+2024-12-23 12:20:00,281 home-fardin-Frappe-practice-frappe:default: frappe.utils.background_jobs.execute_job(event=None, is_async=True, job_name='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., kwargs={'job_type': 'frappe.email.queue.flush', 'scheduled_job_type': '4v1sbl4ch4'..., method='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., site='library.test', user='Administrator') (library.test::scheduled_job::4v1sbl4ch4)
+2024-12-23 12:20:00,505 home-fardin-Frappe-practice-frappe:default: Job OK (library.test::scheduled_job::4v1sbl4ch4)
+2024-12-23 12:20:00,505 Result is kept for 600 seconds
+2024-12-23 12:20:00,508 home-fardin-Frappe-practice-frappe:default: frappe.utils.background_jobs.execute_job(event=None, is_async=True, job_name='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., kwargs={'job_type': 'frappe.automation.doctype.reminder.reminder.send_reminders', ..., method='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., site='library.test', user='Administrator') (library.test::scheduled_job::a7bs7m2kee)
+2024-12-23 12:20:00,680 home-fardin-Frappe-practice-frappe:default: Job OK (library.test::scheduled_job::a7bs7m2kee)
+2024-12-23 12:20:00,680 Result is kept for 600 seconds
+2024-12-23 12:20:00,683 home-fardin-Frappe-practice-frappe:default: frappe.utils.background_jobs.execute_job(event=None, is_async=True, job_name='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., kwargs={'job_type': 'frappe.monitor.flush', 'scheduled_job_type': 'a3fcpp0nfk'}, method='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., site='library.test', user='Administrator') (library.test::scheduled_job::a3fcpp0nfk)
+2024-12-23 12:20:00,846 home-fardin-Frappe-practice-frappe:default: Job OK (library.test::scheduled_job::a3fcpp0nfk)
+2024-12-23 12:20:00,846 Result is kept for 600 seconds
+2024-12-23 12:20:00,849 home-fardin-Frappe-practice-frappe:default: frappe.utils.background_jobs.execute_job(event=None, is_async=True, job_name='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., kwargs={'job_type': 'frappe.email.doctype.notification.notification.trigger_offset..., method='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., site='library.test', user='Administrator') (library.test::scheduled_job::etuapgq4v7)
+2024-12-23 12:20:01,017 home-fardin-Frappe-practice-frappe:default: Job OK (library.test::scheduled_job::etuapgq4v7)
+2024-12-23 12:20:01,017 Result is kept for 600 seconds
+2024-12-23 12:20:01,020 home-fardin-Frappe-practice-frappe:default: frappe.utils.background_jobs.execute_job(event=None, is_async=True, job_name='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., kwargs={'job_type': 'frappe.email.doctype.email_account.email_account.pull', 'sche..., method='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., site='library.test', user='Administrator') (library.test::scheduled_job::hr1hke2a9n)
+2024-12-23 12:20:01,200 home-fardin-Frappe-practice-frappe:default: Job OK (library.test::scheduled_job::hr1hke2a9n)
+2024-12-23 12:20:01,200 Result is kept for 600 seconds
+2024-12-23 12:24:00,371 home-fardin-Frappe-practice-frappe:default: frappe.utils.background_jobs.execute_job(event=None, is_async=True, job_name='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., kwargs={'job_type': 'frappe.automation.doctype.reminder.reminder.send_reminders', ..., method='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., site='library.test', user='Administrator') (library.test::scheduled_job::a7bs7m2kee)
+2024-12-23 12:24:00,546 home-fardin-Frappe-practice-frappe:default: Job OK (library.test::scheduled_job::a7bs7m2kee)
+2024-12-23 12:24:00,546 Result is kept for 600 seconds
+2024-12-23 12:24:00,550 home-fardin-Frappe-practice-frappe:default: frappe.utils.background_jobs.execute_job(event=None, is_async=True, job_name='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., kwargs={'job_type': 'frappe.monitor.flush', 'scheduled_job_type': 'a3fcpp0nfk'}, method='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., site='library.test', user='Administrator') (library.test::scheduled_job::a3fcpp0nfk)
+2024-12-23 12:24:00,714 home-fardin-Frappe-practice-frappe:default: Job OK (library.test::scheduled_job::a3fcpp0nfk)
+2024-12-23 12:24:00,714 Result is kept for 600 seconds
+2024-12-23 12:24:00,717 home-fardin-Frappe-practice-frappe:default: frappe.utils.background_jobs.execute_job(event=None, is_async=True, job_name='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., kwargs={'job_type': 'frappe.email.queue.flush', 'scheduled_job_type': '4v1sbl4ch4'..., method='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., site='library.test', user='Administrator') (library.test::scheduled_job::4v1sbl4ch4)
+2024-12-23 12:24:00,928 home-fardin-Frappe-practice-frappe:default: Job OK (library.test::scheduled_job::4v1sbl4ch4)
+2024-12-23 12:24:00,929 Result is kept for 600 seconds
+2024-12-23 12:25:29,736 Worker 193c8d0a7a724cc1a5c7e4a33266694d [PID 35869]: warm shut down requested
+2024-12-23 12:25:29,738 Unsubscribing from channel rq:pubsub:193c8d0a7a724cc1a5c7e4a33266694d
+2024-12-23 14:13:15,656 Worker rq:worker:9c61d6f4b03e49d89a03fadb59be3fd6 started with PID 46138, version 1.16.2
+2024-12-23 14:13:15,656 Subscribing to channel rq:pubsub:9c61d6f4b03e49d89a03fadb59be3fd6
+2024-12-23 14:13:15,657 *** Listening on home-fardin-Frappe-practice-frappe:short, home-fardin-Frappe-practice-frappe:default, home-fardin-Frappe-practice-frappe:long...
+2024-12-23 14:13:15,657 Cleaning registries for queue: home-fardin-Frappe-practice-frappe:short
+2024-12-23 14:13:15,657 Cleaning registries for queue: home-fardin-Frappe-practice-frappe:default
+2024-12-23 14:13:15,658 Cleaning registries for queue: home-fardin-Frappe-practice-frappe:long
+2024-12-23 14:16:00,259 home-fardin-Frappe-practice-frappe:default: frappe.utils.background_jobs.execute_job(event=None, is_async=True, job_name='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., kwargs={'job_type': 'frappe.email.doctype.newsletter.newsletter.send_scheduled_ema..., method='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., site='library.test', user='Administrator') (library.test::scheduled_job::d9cp75q7p4)
+2024-12-23 14:16:00,564 home-fardin-Frappe-practice-frappe:default: Job OK (library.test::scheduled_job::d9cp75q7p4)
+2024-12-23 14:16:00,565 Result is kept for 600 seconds
+2024-12-23 14:16:00,568 home-fardin-Frappe-practice-frappe:default: frappe.utils.background_jobs.execute_job(event=None, is_async=True, job_name='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., kwargs={'job_type': 'frappe.oauth.delete_oauth2_data', 'scheduled_job_type': '1t84..., method='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., site='library.test', user='Administrator') (library.test::scheduled_job::1t84075plq)
+2024-12-23 14:16:00,739 home-fardin-Frappe-practice-frappe:default: Job OK (library.test::scheduled_job::1t84075plq)
+2024-12-23 14:16:00,739 Result is kept for 600 seconds
+2024-12-23 14:16:00,742 home-fardin-Frappe-practice-frappe:default: frappe.utils.background_jobs.execute_job(event=None, is_async=True, job_name='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., kwargs={'job_type': 'frappe.email.doctype.email_account.email_account.pull', 'sche..., method='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., site='library.test', user='Administrator') (library.test::scheduled_job::hr1hke2a9n)
+2024-12-23 14:16:00,917 home-fardin-Frappe-practice-frappe:default: Job OK (library.test::scheduled_job::hr1hke2a9n)
+2024-12-23 14:16:00,917 Result is kept for 600 seconds
+2024-12-23 14:16:00,920 home-fardin-Frappe-practice-frappe:default: frappe.utils.background_jobs.execute_job(event=None, is_async=True, job_name='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., kwargs={'job_type': 'frappe.model.utils.link_count.update_link_count', 'scheduled_..., method='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., site='library.test', user='Administrator') (library.test::scheduled_job::p5d0if8mu5)
+2024-12-23 14:16:01,091 home-fardin-Frappe-practice-frappe:default: Job OK (library.test::scheduled_job::p5d0if8mu5)
+2024-12-23 14:16:01,091 Result is kept for 600 seconds
+2024-12-23 14:16:01,094 home-fardin-Frappe-practice-frappe:default: frappe.utils.background_jobs.execute_job(event=None, is_async=True, job_name='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., kwargs={'job_type': 'frappe.desk.page.backups.backups.delete_downloadable_backups'..., method='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., site='library.test', user='Administrator') (library.test::scheduled_job::0qnpqjbo7t)
+2024-12-23 14:16:01,268 home-fardin-Frappe-practice-frappe:default: Job OK (library.test::scheduled_job::0qnpqjbo7t)
+2024-12-23 14:16:01,268 Result is kept for 600 seconds
+2024-12-23 14:16:01,272 home-fardin-Frappe-practice-frappe:default: frappe.utils.background_jobs.execute_job(event=None, is_async=True, job_name='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., kwargs={'job_type': 'frappe.monitor.flush', 'scheduled_job_type': 'a3fcpp0nfk'}, method='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., site='library.test', user='Administrator') (library.test::scheduled_job::a3fcpp0nfk)
+2024-12-23 14:16:01,436 home-fardin-Frappe-practice-frappe:default: Job OK (library.test::scheduled_job::a3fcpp0nfk)
+2024-12-23 14:16:01,436 Result is kept for 600 seconds
+2024-12-23 14:16:01,439 home-fardin-Frappe-practice-frappe:default: frappe.utils.background_jobs.execute_job(event=None, is_async=True, job_name='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., kwargs={'job_type': 'frappe.automation.doctype.reminder.reminder.send_reminders', ..., method='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., site='library.test', user='Administrator') (library.test::scheduled_job::a7bs7m2kee)
+2024-12-23 14:16:01,613 home-fardin-Frappe-practice-frappe:default: Job OK (library.test::scheduled_job::a7bs7m2kee)
+2024-12-23 14:16:01,613 Result is kept for 600 seconds
+2024-12-23 14:16:01,616 home-fardin-Frappe-practice-frappe:default: frappe.utils.background_jobs.execute_job(event=None, is_async=True, job_name='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., kwargs={'job_type': 'frappe.deferred_insert.save_to_db', 'scheduled_job_type': 'ni..., method='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., site='library.test', user='Administrator') (library.test::scheduled_job::niupglfgc5)
+2024-12-23 14:16:01,777 home-fardin-Frappe-practice-frappe:default: Job OK (library.test::scheduled_job::niupglfgc5)
+2024-12-23 14:16:01,778 Result is kept for 600 seconds
+2024-12-23 14:16:01,781 home-fardin-Frappe-practice-frappe:default: frappe.utils.background_jobs.execute_job(event=None, is_async=True, job_name='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., kwargs={'job_type': 'frappe.email.queue.flush', 'scheduled_job_type': '4v1sbl4ch4'..., method='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., site='library.test', user='Administrator') (library.test::scheduled_job::4v1sbl4ch4)
+2024-12-23 14:16:01,985 home-fardin-Frappe-practice-frappe:default: Job OK (library.test::scheduled_job::4v1sbl4ch4)
+2024-12-23 14:16:01,985 Result is kept for 600 seconds
+2024-12-23 14:16:01,988 home-fardin-Frappe-practice-frappe:default: frappe.utils.background_jobs.execute_job(event=None, is_async=True, job_name='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., kwargs={'job_type': 'frappe.website.doctype.web_page.web_page.check_publish_status..., method='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., site='library.test', user='Administrator') (library.test::scheduled_job::9r45bclqq7)
+2024-12-23 14:16:02,191 home-fardin-Frappe-practice-frappe:default: Job OK (library.test::scheduled_job::9r45bclqq7)
+2024-12-23 14:16:02,192 Result is kept for 600 seconds
+2024-12-23 14:16:02,194 home-fardin-Frappe-practice-frappe:default: frappe.utils.background_jobs.execute_job(event=None, is_async=True, job_name='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., kwargs={'job_type': 'frappe.model.utils.user_settings.sync_user_settings', 'schedu..., method='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., site='library.test', user='Administrator') (library.test::scheduled_job::n5afo0kh2c)
+2024-12-23 14:16:02,371 home-fardin-Frappe-practice-frappe:default: Job OK (library.test::scheduled_job::n5afo0kh2c)
+2024-12-23 14:16:02,371 Result is kept for 600 seconds
+2024-12-23 14:16:02,373 home-fardin-Frappe-practice-frappe:default: frappe.utils.background_jobs.execute_job(event=None, is_async=True, job_name='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., kwargs={'job_type': 'frappe.email.doctype.notification.notification.trigger_offset..., method='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., site='library.test', user='Administrator') (library.test::scheduled_job::etuapgq4v7)
+2024-12-23 14:16:02,539 home-fardin-Frappe-practice-frappe:default: Job OK (library.test::scheduled_job::etuapgq4v7)
+2024-12-23 14:16:02,539 Result is kept for 600 seconds
+2024-12-23 14:16:02,542 home-fardin-Frappe-practice-frappe:default: frappe.utils.background_jobs.execute_job(event=None, is_async=True, job_name='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., kwargs={'job_type': 'frappe.integrations.doctype.google_calendar.google_calendar.s..., method='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., site='library.test', user='Administrator') (library.test::scheduled_job::iv4f0thmi6)
+2024-12-23 14:16:02,787 home-fardin-Frappe-practice-frappe:default: Job OK (library.test::scheduled_job::iv4f0thmi6)
+2024-12-23 14:16:02,787 Result is kept for 600 seconds
+2024-12-23 14:16:02,791 home-fardin-Frappe-practice-frappe:default: frappe.utils.background_jobs.execute_job(event=None, is_async=True, job_name='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., kwargs={'job_type': 'frappe.website.doctype.personal_data_deletion_request.persona..., method='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., site='library.test', user='Administrator') (library.test::scheduled_job::m8h69ec0he)
+2024-12-23 14:16:02,985 home-fardin-Frappe-practice-frappe:default: Job OK (library.test::scheduled_job::m8h69ec0he)
+2024-12-23 14:16:02,985 Result is kept for 600 seconds
+2024-12-23 14:16:02,987 home-fardin-Frappe-practice-frappe:default: frappe.utils.background_jobs.execute_job(event=None, is_async=True, job_name='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., kwargs={'job_type': 'frappe.desk.form.document_follow.send_hourly_updates', 'sched..., method='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., site='library.test', user='Administrator') (library.test::scheduled_job::0anggdapat)
+2024-12-23 14:16:03,159 home-fardin-Frappe-practice-frappe:default: Job OK (library.test::scheduled_job::0anggdapat)
+2024-12-23 14:16:03,159 Result is kept for 600 seconds
+2024-12-23 14:16:03,162 home-fardin-Frappe-practice-frappe:default: frappe.utils.background_jobs.execute_job(event=None, is_async=True, job_name='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., kwargs={'job_type': 'frappe.twofactor.delete_all_barcodes_for_users', 'scheduled_j..., method='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., site='library.test', user='Administrator') (library.test::scheduled_job::3kftimpqld)
+2024-12-23 14:16:03,331 home-fardin-Frappe-practice-frappe:default: Job OK (library.test::scheduled_job::3kftimpqld)
+2024-12-23 14:16:03,331 Result is kept for 600 seconds
+2024-12-23 14:16:03,334 home-fardin-Frappe-practice-frappe:default: frappe.utils.background_jobs.execute_job(event=None, is_async=True, job_name='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., kwargs={'job_type': 'frappe.utils.global_search.sync_global_search', 'scheduled_jo..., method='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., site='library.test', user='Administrator') (library.test::scheduled_job::7j5bgnsnc9)
+2024-12-23 14:16:03,497 home-fardin-Frappe-practice-frappe:default: Job OK (library.test::scheduled_job::7j5bgnsnc9)
+2024-12-23 14:16:03,497 Result is kept for 600 seconds
+2024-12-23 14:16:03,500 home-fardin-Frappe-practice-frappe:default: frappe.utils.background_jobs.execute_job(event=None, is_async=True, job_name='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., kwargs={'job_type': 'frappe.core.doctype.prepared_report.prepared_report.expire_st..., method='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., site='library.test', user='Administrator') (library.test::scheduled_job::purf3o8f4g)
+2024-12-23 14:16:03,692 home-fardin-Frappe-practice-frappe:default: Job OK (library.test::scheduled_job::purf3o8f4g)
+2024-12-23 14:16:03,692 Result is kept for 600 seconds
+2024-12-23 14:16:03,695 home-fardin-Frappe-practice-frappe:default: frappe.utils.background_jobs.execute_job(event=None, is_async=True, job_name='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., kwargs={'job_type': 'frappe.email.doctype.email_account.email_account.notify_unrep..., method='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., site='library.test', user='Administrator') (library.test::scheduled_job::0qqthanhco)
+2024-12-23 14:16:03,879 home-fardin-Frappe-practice-frappe:default: Job OK (library.test::scheduled_job::0qqthanhco)
+2024-12-23 14:16:03,879 Result is kept for 600 seconds
+2024-12-23 14:20:00,353 home-fardin-Frappe-practice-frappe:default: frappe.utils.background_jobs.execute_job(event=None, is_async=True, job_name='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., kwargs={'job_type': 'frappe.email.queue.flush', 'scheduled_job_type': '4v1sbl4ch4'..., method='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., site='library.test', user='Administrator') (library.test::scheduled_job::4v1sbl4ch4)
+2024-12-23 14:20:00,578 home-fardin-Frappe-practice-frappe:default: Job OK (library.test::scheduled_job::4v1sbl4ch4)
+2024-12-23 14:20:00,579 Result is kept for 600 seconds
+2024-12-23 14:20:00,582 home-fardin-Frappe-practice-frappe:default: frappe.utils.background_jobs.execute_job(event=None, is_async=True, job_name='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., kwargs={'job_type': 'frappe.email.doctype.email_account.email_account.pull', 'sche..., method='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., site='library.test', user='Administrator') (library.test::scheduled_job::hr1hke2a9n)
+2024-12-23 14:20:00,755 home-fardin-Frappe-practice-frappe:default: Job OK (library.test::scheduled_job::hr1hke2a9n)
+2024-12-23 14:20:00,756 Result is kept for 600 seconds
+2024-12-23 14:20:00,758 home-fardin-Frappe-practice-frappe:default: frappe.utils.background_jobs.execute_job(event=None, is_async=True, job_name='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., kwargs={'job_type': 'frappe.monitor.flush', 'scheduled_job_type': 'a3fcpp0nfk'}, method='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., site='library.test', user='Administrator') (library.test::scheduled_job::a3fcpp0nfk)
+2024-12-23 14:20:00,921 home-fardin-Frappe-practice-frappe:default: Job OK (library.test::scheduled_job::a3fcpp0nfk)
+2024-12-23 14:20:00,921 Result is kept for 600 seconds
+2024-12-23 14:20:00,923 home-fardin-Frappe-practice-frappe:default: frappe.utils.background_jobs.execute_job(event=None, is_async=True, job_name='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., kwargs={'job_type': 'frappe.email.doctype.notification.notification.trigger_offset..., method='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., site='library.test', user='Administrator') (library.test::scheduled_job::etuapgq4v7)
+2024-12-23 14:20:01,088 home-fardin-Frappe-practice-frappe:default: Job OK (library.test::scheduled_job::etuapgq4v7)
+2024-12-23 14:20:01,088 Result is kept for 600 seconds
+2024-12-23 14:20:01,090 home-fardin-Frappe-practice-frappe:default: frappe.utils.background_jobs.execute_job(event=None, is_async=True, job_name='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., kwargs={'job_type': 'frappe.automation.doctype.reminder.reminder.send_reminders', ..., method='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., site='library.test', user='Administrator') (library.test::scheduled_job::a7bs7m2kee)
+2024-12-23 14:20:01,256 home-fardin-Frappe-practice-frappe:default: Job OK (library.test::scheduled_job::a7bs7m2kee)
+2024-12-23 14:20:01,256 Result is kept for 600 seconds
+2024-12-23 14:24:00,400 home-fardin-Frappe-practice-frappe:default: frappe.utils.background_jobs.execute_job(event=None, is_async=True, job_name='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., kwargs={'job_type': 'frappe.automation.doctype.reminder.reminder.send_reminders', ..., method='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., site='library.test', user='Administrator') (library.test::scheduled_job::a7bs7m2kee)
+2024-12-23 14:24:00,583 home-fardin-Frappe-practice-frappe:default: Job OK (library.test::scheduled_job::a7bs7m2kee)
+2024-12-23 14:24:00,583 Result is kept for 600 seconds
+2024-12-23 14:24:00,585 Cleaning registries for queue: home-fardin-Frappe-practice-frappe:short
+2024-12-23 14:24:00,586 Cleaning registries for queue: home-fardin-Frappe-practice-frappe:default
+2024-12-23 14:24:00,586 Cleaning registries for queue: home-fardin-Frappe-practice-frappe:long
+2024-12-23 14:24:00,587 home-fardin-Frappe-practice-frappe:default: frappe.utils.background_jobs.execute_job(event=None, is_async=True, job_name='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., kwargs={'job_type': 'frappe.email.queue.flush', 'scheduled_job_type': '4v1sbl4ch4'..., method='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., site='library.test', user='Administrator') (library.test::scheduled_job::4v1sbl4ch4)
+2024-12-23 14:24:00,796 home-fardin-Frappe-practice-frappe:default: Job OK (library.test::scheduled_job::4v1sbl4ch4)
+2024-12-23 14:24:00,796 Result is kept for 600 seconds
+2024-12-23 14:24:00,799 home-fardin-Frappe-practice-frappe:default: frappe.utils.background_jobs.execute_job(event=None, is_async=True, job_name='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., kwargs={'job_type': 'frappe.monitor.flush', 'scheduled_job_type': 'a3fcpp0nfk'}, method='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., site='library.test', user='Administrator') (library.test::scheduled_job::a3fcpp0nfk)
+2024-12-23 14:24:00,964 home-fardin-Frappe-practice-frappe:default: Job OK (library.test::scheduled_job::a3fcpp0nfk)
+2024-12-23 14:24:00,964 Result is kept for 600 seconds
+2024-12-23 14:28:00,458 home-fardin-Frappe-practice-frappe:default: frappe.utils.background_jobs.execute_job(event=None, is_async=True, job_name='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., kwargs={'job_type': 'frappe.email.doctype.notification.notification.trigger_offset..., method='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., site='library.test', user='Administrator') (library.test::scheduled_job::etuapgq4v7)
+2024-12-23 14:28:00,639 home-fardin-Frappe-practice-frappe:default: Job OK (library.test::scheduled_job::etuapgq4v7)
+2024-12-23 14:28:00,639 Result is kept for 600 seconds
+2024-12-23 14:28:00,642 home-fardin-Frappe-practice-frappe:default: frappe.utils.background_jobs.execute_job(event=None, is_async=True, job_name='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., kwargs={'job_type': 'frappe.monitor.flush', 'scheduled_job_type': 'a3fcpp0nfk'}, method='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., site='library.test', user='Administrator') (library.test::scheduled_job::a3fcpp0nfk)
+2024-12-23 14:28:00,808 home-fardin-Frappe-practice-frappe:default: Job OK (library.test::scheduled_job::a3fcpp0nfk)
+2024-12-23 14:28:00,808 Result is kept for 600 seconds
+2024-12-23 14:28:00,811 home-fardin-Frappe-practice-frappe:default: frappe.utils.background_jobs.execute_job(event=None, is_async=True, job_name='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., kwargs={'job_type': 'frappe.email.queue.flush', 'scheduled_job_type': '4v1sbl4ch4'..., method='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., site='library.test', user='Administrator') (library.test::scheduled_job::4v1sbl4ch4)
+2024-12-23 14:28:01,032 home-fardin-Frappe-practice-frappe:default: Job OK (library.test::scheduled_job::4v1sbl4ch4)
+2024-12-23 14:28:01,032 Result is kept for 600 seconds
+2024-12-23 14:28:01,036 home-fardin-Frappe-practice-frappe:default: frappe.utils.background_jobs.execute_job(event=None, is_async=True, job_name='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., kwargs={'job_type': 'frappe.automation.doctype.reminder.reminder.send_reminders', ..., method='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., site='library.test', user='Administrator') (library.test::scheduled_job::a7bs7m2kee)
+2024-12-23 14:28:01,205 home-fardin-Frappe-practice-frappe:default: Job OK (library.test::scheduled_job::a7bs7m2kee)
+2024-12-23 14:28:01,206 Result is kept for 600 seconds
+2024-12-23 14:32:00,509 home-fardin-Frappe-practice-frappe:default: frappe.utils.background_jobs.execute_job(event=None, is_async=True, job_name='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., kwargs={'job_type': 'frappe.email.queue.flush', 'scheduled_job_type': '4v1sbl4ch4'..., method='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., site='library.test', user='Administrator') (library.test::scheduled_job::4v1sbl4ch4)
+2024-12-23 14:32:00,744 home-fardin-Frappe-practice-frappe:default: Job OK (library.test::scheduled_job::4v1sbl4ch4)
+2024-12-23 14:32:00,744 Result is kept for 600 seconds
+2024-12-23 14:32:00,747 home-fardin-Frappe-practice-frappe:default: frappe.utils.background_jobs.execute_job(event=None, is_async=True, job_name='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., kwargs={'job_type': 'frappe.oauth.delete_oauth2_data', 'scheduled_job_type': '1t84..., method='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., site='library.test', user='Administrator') (library.test::scheduled_job::1t84075plq)
+2024-12-23 14:32:00,932 home-fardin-Frappe-practice-frappe:default: Job OK (library.test::scheduled_job::1t84075plq)
+2024-12-23 14:32:00,932 Result is kept for 600 seconds
+2024-12-23 14:32:00,935 home-fardin-Frappe-practice-frappe:default: frappe.utils.background_jobs.execute_job(event=None, is_async=True, job_name='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., kwargs={'job_type': 'frappe.utils.global_search.sync_global_search', 'scheduled_jo..., method='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., site='library.test', user='Administrator') (library.test::scheduled_job::7j5bgnsnc9)
+2024-12-23 14:32:01,107 home-fardin-Frappe-practice-frappe:default: Job OK (library.test::scheduled_job::7j5bgnsnc9)
+2024-12-23 14:32:01,107 Result is kept for 600 seconds
+2024-12-23 14:32:01,111 home-fardin-Frappe-practice-frappe:default: frappe.utils.background_jobs.execute_job(event=None, is_async=True, job_name='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., kwargs={'job_type': 'frappe.email.doctype.email_account.email_account.notify_unrep..., method='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., site='library.test', user='Administrator') (library.test::scheduled_job::0qqthanhco)
+2024-12-23 14:32:01,293 home-fardin-Frappe-practice-frappe:default: Job OK (library.test::scheduled_job::0qqthanhco)
+2024-12-23 14:32:01,293 Result is kept for 600 seconds
+2024-12-23 14:32:01,296 home-fardin-Frappe-practice-frappe:default: frappe.utils.background_jobs.execute_job(event=None, is_async=True, job_name='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., kwargs={'job_type': 'frappe.twofactor.delete_all_barcodes_for_users', 'scheduled_j..., method='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., site='library.test', user='Administrator') (library.test::scheduled_job::3kftimpqld)
+2024-12-23 14:32:01,470 home-fardin-Frappe-practice-frappe:default: Job OK (library.test::scheduled_job::3kftimpqld)
+2024-12-23 14:32:01,470 Result is kept for 600 seconds
+2024-12-23 14:32:01,473 home-fardin-Frappe-practice-frappe:default: frappe.utils.background_jobs.execute_job(event=None, is_async=True, job_name='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., kwargs={'job_type': 'frappe.core.doctype.prepared_report.prepared_report.expire_st..., method='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., site='library.test', user='Administrator') (library.test::scheduled_job::purf3o8f4g)
+2024-12-23 14:32:01,656 home-fardin-Frappe-practice-frappe:default: Job OK (library.test::scheduled_job::purf3o8f4g)
+2024-12-23 14:32:01,656 Result is kept for 600 seconds
+2024-12-23 14:32:01,660 home-fardin-Frappe-practice-frappe:default: frappe.utils.background_jobs.execute_job(event=None, is_async=True, job_name='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., kwargs={'job_type': 'frappe.monitor.flush', 'scheduled_job_type': 'a3fcpp0nfk'}, method='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., site='library.test', user='Administrator') (library.test::scheduled_job::a3fcpp0nfk)
+2024-12-23 14:32:01,834 home-fardin-Frappe-practice-frappe:default: Job OK (library.test::scheduled_job::a3fcpp0nfk)
+2024-12-23 14:32:01,834 Result is kept for 600 seconds
+2024-12-23 14:32:01,837 home-fardin-Frappe-practice-frappe:default: frappe.utils.background_jobs.execute_job(event=None, is_async=True, job_name='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., kwargs={'job_type': 'frappe.email.doctype.email_account.email_account.pull', 'sche..., method='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., site='library.test', user='Administrator') (library.test::scheduled_job::hr1hke2a9n)
+2024-12-23 14:32:02,022 home-fardin-Frappe-practice-frappe:default: Job OK (library.test::scheduled_job::hr1hke2a9n)
+2024-12-23 14:32:02,022 Result is kept for 600 seconds
+2024-12-23 14:32:02,026 home-fardin-Frappe-practice-frappe:default: frappe.utils.background_jobs.execute_job(event=None, is_async=True, job_name='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., kwargs={'job_type': 'frappe.automation.doctype.reminder.reminder.send_reminders', ..., method='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., site='library.test', user='Administrator') (library.test::scheduled_job::a7bs7m2kee)
+2024-12-23 14:32:02,209 home-fardin-Frappe-practice-frappe:default: Job OK (library.test::scheduled_job::a7bs7m2kee)
+2024-12-23 14:32:02,209 Result is kept for 600 seconds
+2024-12-23 14:32:02,212 home-fardin-Frappe-practice-frappe:default: frappe.utils.background_jobs.execute_job(event=None, is_async=True, job_name='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., kwargs={'job_type': 'frappe.website.doctype.web_page.web_page.check_publish_status..., method='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., site='library.test', user='Administrator') (library.test::scheduled_job::9r45bclqq7)
+2024-12-23 14:32:02,417 home-fardin-Frappe-practice-frappe:default: Job OK (library.test::scheduled_job::9r45bclqq7)
+2024-12-23 14:32:02,417 Result is kept for 600 seconds
+2024-12-23 14:32:02,421 home-fardin-Frappe-practice-frappe:default: frappe.utils.background_jobs.execute_job(event=None, is_async=True, job_name='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., kwargs={'job_type': 'frappe.email.doctype.notification.notification.trigger_offset..., method='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., site='library.test', user='Administrator') (library.test::scheduled_job::etuapgq4v7)
+2024-12-23 14:32:02,600 home-fardin-Frappe-practice-frappe:default: Job OK (library.test::scheduled_job::etuapgq4v7)
+2024-12-23 14:32:02,600 Result is kept for 600 seconds
+2024-12-23 14:32:02,603 home-fardin-Frappe-practice-frappe:default: frappe.utils.background_jobs.execute_job(event=None, is_async=True, job_name='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., kwargs={'job_type': 'frappe.deferred_insert.save_to_db', 'scheduled_job_type': 'ni..., method='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., site='library.test', user='Administrator') (library.test::scheduled_job::niupglfgc5)
+2024-12-23 14:32:02,776 home-fardin-Frappe-practice-frappe:default: Job OK (library.test::scheduled_job::niupglfgc5)
+2024-12-23 14:32:02,776 Result is kept for 600 seconds
+2024-12-23 14:36:00,582 home-fardin-Frappe-practice-frappe:default: frappe.utils.background_jobs.execute_job(event=None, is_async=True, job_name='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., kwargs={'job_type': 'frappe.email.doctype.notification.notification.trigger_offset..., method='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., site='library.test', user='Administrator') (library.test::scheduled_job::etuapgq4v7)
+2024-12-23 14:36:00,760 home-fardin-Frappe-practice-frappe:default: Job OK (library.test::scheduled_job::etuapgq4v7)
+2024-12-23 14:36:00,760 Result is kept for 600 seconds
+2024-12-23 14:36:00,763 Cleaning registries for queue: home-fardin-Frappe-practice-frappe:short
+2024-12-23 14:36:00,764 Cleaning registries for queue: home-fardin-Frappe-practice-frappe:default
+2024-12-23 14:36:00,764 Cleaning registries for queue: home-fardin-Frappe-practice-frappe:long
+2024-12-23 14:36:00,765 home-fardin-Frappe-practice-frappe:default: frappe.utils.background_jobs.execute_job(event=None, is_async=True, job_name='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., kwargs={'job_type': 'frappe.monitor.flush', 'scheduled_job_type': 'a3fcpp0nfk'}, method='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., site='library.test', user='Administrator') (library.test::scheduled_job::a3fcpp0nfk)
+2024-12-23 14:36:00,928 home-fardin-Frappe-practice-frappe:default: Job OK (library.test::scheduled_job::a3fcpp0nfk)
+2024-12-23 14:36:00,928 Result is kept for 600 seconds
+2024-12-23 14:36:00,931 home-fardin-Frappe-practice-frappe:default: frappe.utils.background_jobs.execute_job(event=None, is_async=True, job_name='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., kwargs={'job_type': 'frappe.automation.doctype.reminder.reminder.send_reminders', ..., method='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., site='library.test', user='Administrator') (library.test::scheduled_job::a7bs7m2kee)
+2024-12-23 14:36:01,102 home-fardin-Frappe-practice-frappe:default: Job OK (library.test::scheduled_job::a7bs7m2kee)
+2024-12-23 14:36:01,102 Result is kept for 600 seconds
+2024-12-23 14:36:01,105 home-fardin-Frappe-practice-frappe:default: frappe.utils.background_jobs.execute_job(event=None, is_async=True, job_name='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., kwargs={'job_type': 'frappe.email.queue.flush', 'scheduled_job_type': '4v1sbl4ch4'..., method='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., site='library.test', user='Administrator') (library.test::scheduled_job::4v1sbl4ch4)
+2024-12-23 14:36:01,311 home-fardin-Frappe-practice-frappe:default: Job OK (library.test::scheduled_job::4v1sbl4ch4)
+2024-12-23 14:36:01,311 Result is kept for 600 seconds
+2024-12-23 14:40:00,641 home-fardin-Frappe-practice-frappe:default: frappe.utils.background_jobs.execute_job(event=None, is_async=True, job_name='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., kwargs={'job_type': 'frappe.email.queue.flush', 'scheduled_job_type': '4v1sbl4ch4'..., method='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., site='library.test', user='Administrator') (library.test::scheduled_job::4v1sbl4ch4)
+2024-12-23 14:40:00,858 home-fardin-Frappe-practice-frappe:default: Job OK (library.test::scheduled_job::4v1sbl4ch4)
+2024-12-23 14:40:00,858 Result is kept for 600 seconds
+2024-12-23 14:40:00,861 home-fardin-Frappe-practice-frappe:default: frappe.utils.background_jobs.execute_job(event=None, is_async=True, job_name='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., kwargs={'job_type': 'frappe.automation.doctype.reminder.reminder.send_reminders', ..., method='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., site='library.test', user='Administrator') (library.test::scheduled_job::a7bs7m2kee)
+2024-12-23 14:40:01,030 home-fardin-Frappe-practice-frappe:default: Job OK (library.test::scheduled_job::a7bs7m2kee)
+2024-12-23 14:40:01,030 Result is kept for 600 seconds
+2024-12-23 14:40:01,032 home-fardin-Frappe-practice-frappe:default: frappe.utils.background_jobs.execute_job(event=None, is_async=True, job_name='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., kwargs={'job_type': 'frappe.monitor.flush', 'scheduled_job_type': 'a3fcpp0nfk'}, method='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., site='library.test', user='Administrator') (library.test::scheduled_job::a3fcpp0nfk)
+2024-12-23 14:40:01,195 home-fardin-Frappe-practice-frappe:default: Job OK (library.test::scheduled_job::a3fcpp0nfk)
+2024-12-23 14:40:01,195 Result is kept for 600 seconds
+2024-12-23 14:40:01,198 home-fardin-Frappe-practice-frappe:default: frappe.utils.background_jobs.execute_job(event=None, is_async=True, job_name='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., kwargs={'job_type': 'frappe.email.doctype.notification.notification.trigger_offset..., method='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., site='library.test', user='Administrator') (library.test::scheduled_job::etuapgq4v7)
+2024-12-23 14:40:01,363 home-fardin-Frappe-practice-frappe:default: Job OK (library.test::scheduled_job::etuapgq4v7)
+2024-12-23 14:40:01,363 Result is kept for 600 seconds
+2024-12-23 14:40:01,366 home-fardin-Frappe-practice-frappe:default: frappe.utils.background_jobs.execute_job(event=None, is_async=True, job_name='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., kwargs={'job_type': 'frappe.email.doctype.email_account.email_account.pull', 'sche..., method='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., site='library.test', user='Administrator') (library.test::scheduled_job::hr1hke2a9n)
+2024-12-23 14:40:01,542 home-fardin-Frappe-practice-frappe:default: Job OK (library.test::scheduled_job::hr1hke2a9n)
+2024-12-23 14:40:01,542 Result is kept for 600 seconds
+2024-12-23 14:44:00,713 home-fardin-Frappe-practice-frappe:default: frappe.utils.background_jobs.execute_job(event=None, is_async=True, job_name='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., kwargs={'job_type': 'frappe.monitor.flush', 'scheduled_job_type': 'a3fcpp0nfk'}, method='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., site='library.test', user='Administrator') (library.test::scheduled_job::a3fcpp0nfk)
+2024-12-23 14:44:00,888 home-fardin-Frappe-practice-frappe:default: Job OK (library.test::scheduled_job::a3fcpp0nfk)
+2024-12-23 14:44:00,888 Result is kept for 600 seconds
+2024-12-23 14:44:00,891 home-fardin-Frappe-practice-frappe:default: frappe.utils.background_jobs.execute_job(event=None, is_async=True, job_name='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., kwargs={'job_type': 'frappe.email.queue.flush', 'scheduled_job_type': '4v1sbl4ch4'..., method='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., site='library.test', user='Administrator') (library.test::scheduled_job::4v1sbl4ch4)
+2024-12-23 14:44:01,100 home-fardin-Frappe-practice-frappe:default: Job OK (library.test::scheduled_job::4v1sbl4ch4)
+2024-12-23 14:44:01,100 Result is kept for 600 seconds
+2024-12-23 14:44:01,104 home-fardin-Frappe-practice-frappe:default: frappe.utils.background_jobs.execute_job(event=None, is_async=True, job_name='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., kwargs={'job_type': 'frappe.automation.doctype.reminder.reminder.send_reminders', ..., method='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., site='library.test', user='Administrator') (library.test::scheduled_job::a7bs7m2kee)
+2024-12-23 14:44:01,271 home-fardin-Frappe-practice-frappe:default: Job OK (library.test::scheduled_job::a7bs7m2kee)
+2024-12-23 14:44:01,271 Result is kept for 600 seconds
+2024-12-23 14:48:00,777 home-fardin-Frappe-practice-frappe:default: frappe.utils.background_jobs.execute_job(event=None, is_async=True, job_name='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., kwargs={'job_type': 'frappe.twofactor.delete_all_barcodes_for_users', 'scheduled_j..., method='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., site='library.test', user='Administrator') (library.test::scheduled_job::3kftimpqld)
+2024-12-23 14:48:00,958 home-fardin-Frappe-practice-frappe:default: Job OK (library.test::scheduled_job::3kftimpqld)
+2024-12-23 14:48:00,958 Result is kept for 600 seconds
+2024-12-23 14:48:00,961 Cleaning registries for queue: home-fardin-Frappe-practice-frappe:short
+2024-12-23 14:48:00,961 Cleaning registries for queue: home-fardin-Frappe-practice-frappe:default
+2024-12-23 14:48:00,961 Cleaning registries for queue: home-fardin-Frappe-practice-frappe:long
+2024-12-23 14:48:00,962 home-fardin-Frappe-practice-frappe:default: frappe.utils.background_jobs.execute_job(event=None, is_async=True, job_name='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., kwargs={'job_type': 'frappe.utils.global_search.sync_global_search', 'scheduled_jo..., method='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., site='library.test', user='Administrator') (library.test::scheduled_job::7j5bgnsnc9)
+2024-12-23 14:48:01,133 home-fardin-Frappe-practice-frappe:default: Job OK (library.test::scheduled_job::7j5bgnsnc9)
+2024-12-23 14:48:01,133 Result is kept for 600 seconds
+2024-12-23 14:48:01,137 home-fardin-Frappe-practice-frappe:default: frappe.utils.background_jobs.execute_job(event=None, is_async=True, job_name='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., kwargs={'job_type': 'frappe.email.doctype.notification.notification.trigger_offset..., method='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., site='library.test', user='Administrator') (library.test::scheduled_job::etuapgq4v7)
+2024-12-23 14:48:01,313 home-fardin-Frappe-practice-frappe:default: Job OK (library.test::scheduled_job::etuapgq4v7)
+2024-12-23 14:48:01,313 Result is kept for 600 seconds
+2024-12-23 14:48:01,316 home-fardin-Frappe-practice-frappe:default: frappe.utils.background_jobs.execute_job(event=None, is_async=True, job_name='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., kwargs={'job_type': 'frappe.email.queue.flush', 'scheduled_job_type': '4v1sbl4ch4'..., method='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., site='library.test', user='Administrator') (library.test::scheduled_job::4v1sbl4ch4)
+2024-12-23 14:48:01,528 home-fardin-Frappe-practice-frappe:default: Job OK (library.test::scheduled_job::4v1sbl4ch4)
+2024-12-23 14:48:01,528 Result is kept for 600 seconds
+2024-12-23 14:48:01,532 home-fardin-Frappe-practice-frappe:default: frappe.utils.background_jobs.execute_job(event=None, is_async=True, job_name='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., kwargs={'job_type': 'frappe.deferred_insert.save_to_db', 'scheduled_job_type': 'ni..., method='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., site='library.test', user='Administrator') (library.test::scheduled_job::niupglfgc5)
+2024-12-23 14:48:01,705 home-fardin-Frappe-practice-frappe:default: Job OK (library.test::scheduled_job::niupglfgc5)
+2024-12-23 14:48:01,705 Result is kept for 600 seconds
+2024-12-23 14:48:01,709 home-fardin-Frappe-practice-frappe:default: frappe.utils.background_jobs.execute_job(event=None, is_async=True, job_name='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., kwargs={'job_type': 'frappe.website.doctype.web_page.web_page.check_publish_status..., method='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., site='library.test', user='Administrator') (library.test::scheduled_job::9r45bclqq7)
+2024-12-23 14:48:01,924 home-fardin-Frappe-practice-frappe:default: Job OK (library.test::scheduled_job::9r45bclqq7)
+2024-12-23 14:48:01,924 Result is kept for 600 seconds
+2024-12-23 14:48:01,927 home-fardin-Frappe-practice-frappe:default: frappe.utils.background_jobs.execute_job(event=None, is_async=True, job_name='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., kwargs={'job_type': 'frappe.email.doctype.email_account.email_account.notify_unrep..., method='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., site='library.test', user='Administrator') (library.test::scheduled_job::0qqthanhco)
+2024-12-23 14:48:02,117 home-fardin-Frappe-practice-frappe:default: Job OK (library.test::scheduled_job::0qqthanhco)
+2024-12-23 14:48:02,117 Result is kept for 600 seconds
+2024-12-23 14:48:02,120 home-fardin-Frappe-practice-frappe:default: frappe.utils.background_jobs.execute_job(event=None, is_async=True, job_name='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., kwargs={'job_type': 'frappe.monitor.flush', 'scheduled_job_type': 'a3fcpp0nfk'}, method='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., site='library.test', user='Administrator') (library.test::scheduled_job::a3fcpp0nfk)
+2024-12-23 14:48:02,293 home-fardin-Frappe-practice-frappe:default: Job OK (library.test::scheduled_job::a3fcpp0nfk)
+2024-12-23 14:48:02,293 Result is kept for 600 seconds
+2024-12-23 14:48:02,295 home-fardin-Frappe-practice-frappe:default: frappe.utils.background_jobs.execute_job(event=None, is_async=True, job_name='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., kwargs={'job_type': 'frappe.automation.doctype.reminder.reminder.send_reminders', ..., method='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., site='library.test', user='Administrator') (library.test::scheduled_job::a7bs7m2kee)
+2024-12-23 14:48:02,472 home-fardin-Frappe-practice-frappe:default: Job OK (library.test::scheduled_job::a7bs7m2kee)
+2024-12-23 14:48:02,472 Result is kept for 600 seconds
+2024-12-23 14:48:02,475 home-fardin-Frappe-practice-frappe:default: frappe.utils.background_jobs.execute_job(event=None, is_async=True, job_name='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., kwargs={'job_type': 'frappe.oauth.delete_oauth2_data', 'scheduled_job_type': '1t84..., method='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., site='library.test', user='Administrator') (library.test::scheduled_job::1t84075plq)
+2024-12-23 14:48:02,659 home-fardin-Frappe-practice-frappe:default: Job OK (library.test::scheduled_job::1t84075plq)
+2024-12-23 14:48:02,659 Result is kept for 600 seconds
+2024-12-23 14:52:00,867 home-fardin-Frappe-practice-frappe:default: frappe.utils.background_jobs.execute_job(event=None, is_async=True, job_name='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., kwargs={'job_type': 'frappe.monitor.flush', 'scheduled_job_type': 'a3fcpp0nfk'}, method='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., site='library.test', user='Administrator') (library.test::scheduled_job::a3fcpp0nfk)
+2024-12-23 14:52:01,038 home-fardin-Frappe-practice-frappe:default: Job OK (library.test::scheduled_job::a3fcpp0nfk)
+2024-12-23 14:52:01,038 Result is kept for 600 seconds
+2024-12-23 14:52:01,041 home-fardin-Frappe-practice-frappe:default: frappe.utils.background_jobs.execute_job(event=None, is_async=True, job_name='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., kwargs={'job_type': 'frappe.email.queue.flush', 'scheduled_job_type': '4v1sbl4ch4'..., method='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., site='library.test', user='Administrator') (library.test::scheduled_job::4v1sbl4ch4)
+2024-12-23 14:52:01,246 home-fardin-Frappe-practice-frappe:default: Job OK (library.test::scheduled_job::4v1sbl4ch4)
+2024-12-23 14:52:01,246 Result is kept for 600 seconds
+2024-12-23 14:52:01,250 home-fardin-Frappe-practice-frappe:default: frappe.utils.background_jobs.execute_job(event=None, is_async=True, job_name='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., kwargs={'job_type': 'frappe.email.doctype.notification.notification.trigger_offset..., method='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., site='library.test', user='Administrator') (library.test::scheduled_job::etuapgq4v7)
+2024-12-23 14:52:01,415 home-fardin-Frappe-practice-frappe:default: Job OK (library.test::scheduled_job::etuapgq4v7)
+2024-12-23 14:52:01,416 Result is kept for 600 seconds
+2024-12-23 14:52:01,419 home-fardin-Frappe-practice-frappe:default: frappe.utils.background_jobs.execute_job(event=None, is_async=True, job_name='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., kwargs={'job_type': 'frappe.automation.doctype.reminder.reminder.send_reminders', ..., method='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., site='library.test', user='Administrator') (library.test::scheduled_job::a7bs7m2kee)
+2024-12-23 14:52:01,585 home-fardin-Frappe-practice-frappe:default: Job OK (library.test::scheduled_job::a7bs7m2kee)
+2024-12-23 14:52:01,585 Result is kept for 600 seconds
+2024-12-23 14:52:01,588 home-fardin-Frappe-practice-frappe:default: frappe.utils.background_jobs.execute_job(event=None, is_async=True, job_name='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., kwargs={'job_type': 'frappe.email.doctype.email_account.email_account.pull', 'sche..., method='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., site='library.test', user='Administrator') (library.test::scheduled_job::hr1hke2a9n)
+2024-12-23 14:52:01,762 home-fardin-Frappe-practice-frappe:default: Job OK (library.test::scheduled_job::hr1hke2a9n)
+2024-12-23 14:52:01,763 Result is kept for 600 seconds
+2024-12-23 14:56:00,929 home-fardin-Frappe-practice-frappe:default: frappe.utils.background_jobs.execute_job(event=None, is_async=True, job_name='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., kwargs={'job_type': 'frappe.automation.doctype.reminder.reminder.send_reminders', ..., method='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., site='library.test', user='Administrator') (library.test::scheduled_job::a7bs7m2kee)
+2024-12-23 14:56:01,114 home-fardin-Frappe-practice-frappe:default: Job OK (library.test::scheduled_job::a7bs7m2kee)
+2024-12-23 14:56:01,114 Result is kept for 600 seconds
+2024-12-23 14:56:01,117 home-fardin-Frappe-practice-frappe:default: frappe.utils.background_jobs.execute_job(event=None, is_async=True, job_name='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., kwargs={'job_type': 'frappe.monitor.flush', 'scheduled_job_type': 'a3fcpp0nfk'}, method='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., site='library.test', user='Administrator') (library.test::scheduled_job::a3fcpp0nfk)
+2024-12-23 14:56:01,286 home-fardin-Frappe-practice-frappe:default: Job OK (library.test::scheduled_job::a3fcpp0nfk)
+2024-12-23 14:56:01,286 Result is kept for 600 seconds
+2024-12-23 14:56:01,289 home-fardin-Frappe-practice-frappe:default: frappe.utils.background_jobs.execute_job(event=None, is_async=True, job_name='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., kwargs={'job_type': 'frappe.email.doctype.notification.notification.trigger_offset..., method='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., site='library.test', user='Administrator') (library.test::scheduled_job::etuapgq4v7)
+2024-12-23 14:56:01,463 home-fardin-Frappe-practice-frappe:default: Job OK (library.test::scheduled_job::etuapgq4v7)
+2024-12-23 14:56:01,463 Result is kept for 600 seconds
+2024-12-23 14:56:01,466 home-fardin-Frappe-practice-frappe:default: frappe.utils.background_jobs.execute_job(event=None, is_async=True, job_name='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., kwargs={'job_type': 'frappe.email.queue.flush', 'scheduled_job_type': '4v1sbl4ch4'..., method='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., site='library.test', user='Administrator') (library.test::scheduled_job::4v1sbl4ch4)
+2024-12-23 14:56:01,685 home-fardin-Frappe-practice-frappe:default: Job OK (library.test::scheduled_job::4v1sbl4ch4)
+2024-12-23 14:56:01,685 Result is kept for 600 seconds
+2024-12-23 15:00:00,986 home-fardin-Frappe-practice-frappe:default: frappe.utils.background_jobs.execute_job(event=None, is_async=True, job_name='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., kwargs={'job_type': 'frappe.email.doctype.email_account.email_account.pull', 'sche..., method='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., site='library.test', user='Administrator') (library.test::scheduled_job::hr1hke2a9n)
+2024-12-23 15:00:01,184 home-fardin-Frappe-practice-frappe:default: Job OK (library.test::scheduled_job::hr1hke2a9n)
+2024-12-23 15:00:01,184 Result is kept for 600 seconds
+2024-12-23 15:00:01,187 Cleaning registries for queue: home-fardin-Frappe-practice-frappe:short
+2024-12-23 15:00:01,187 Cleaning registries for queue: home-fardin-Frappe-practice-frappe:default
+2024-12-23 15:00:01,188 Cleaning registries for queue: home-fardin-Frappe-practice-frappe:long
+2024-12-23 15:00:01,188 home-fardin-Frappe-practice-frappe:default: frappe.utils.background_jobs.execute_job(event=None, is_async=True, job_name='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., kwargs={'job_type': 'frappe.model.utils.link_count.update_link_count', 'scheduled_..., method='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., site='library.test', user='Administrator') (library.test::scheduled_job::p5d0if8mu5)
+2024-12-23 15:00:01,370 home-fardin-Frappe-practice-frappe:default: Job OK (library.test::scheduled_job::p5d0if8mu5)
+2024-12-23 15:00:01,370 Result is kept for 600 seconds
+2024-12-23 15:00:01,374 home-fardin-Frappe-practice-frappe:default: frappe.utils.background_jobs.execute_job(event=None, is_async=True, job_name='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., kwargs={'job_type': 'frappe.oauth.delete_oauth2_data', 'scheduled_job_type': '1t84..., method='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., site='library.test', user='Administrator') (library.test::scheduled_job::1t84075plq)
+2024-12-23 15:00:01,554 home-fardin-Frappe-practice-frappe:default: Job OK (library.test::scheduled_job::1t84075plq)
+2024-12-23 15:00:01,554 Result is kept for 600 seconds
+2024-12-23 15:00:01,557 home-fardin-Frappe-practice-frappe:default: frappe.utils.background_jobs.execute_job(event=None, is_async=True, job_name='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., kwargs={'job_type': 'frappe.monitor.flush', 'scheduled_job_type': 'a3fcpp0nfk'}, method='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., site='library.test', user='Administrator') (library.test::scheduled_job::a3fcpp0nfk)
+2024-12-23 15:00:01,728 home-fardin-Frappe-practice-frappe:default: Job OK (library.test::scheduled_job::a3fcpp0nfk)
+2024-12-23 15:00:01,728 Result is kept for 600 seconds
+2024-12-23 15:00:01,732 home-fardin-Frappe-practice-frappe:default: frappe.utils.background_jobs.execute_job(event=None, is_async=True, job_name='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., kwargs={'job_type': 'frappe.desk.page.backups.backups.delete_downloadable_backups'..., method='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., site='library.test', user='Administrator') (library.test::scheduled_job::0qnpqjbo7t)
+2024-12-23 15:00:01,912 home-fardin-Frappe-practice-frappe:default: Job OK (library.test::scheduled_job::0qnpqjbo7t)
+2024-12-23 15:00:01,912 Result is kept for 600 seconds
+2024-12-23 15:00:01,915 home-fardin-Frappe-practice-frappe:default: frappe.utils.background_jobs.execute_job(event=None, is_async=True, job_name='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., kwargs={'job_type': 'frappe.automation.doctype.reminder.reminder.send_reminders', ..., method='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., site='library.test', user='Administrator') (library.test::scheduled_job::a7bs7m2kee)
+2024-12-23 15:00:02,084 home-fardin-Frappe-practice-frappe:default: Job OK (library.test::scheduled_job::a7bs7m2kee)
+2024-12-23 15:00:02,084 Result is kept for 600 seconds
+2024-12-23 15:00:02,087 home-fardin-Frappe-practice-frappe:default: frappe.utils.background_jobs.execute_job(event=None, is_async=True, job_name='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., kwargs={'job_type': 'frappe.desk.form.document_follow.send_hourly_updates', 'sched..., method='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., site='library.test', user='Administrator') (library.test::scheduled_job::0anggdapat)
+2024-12-23 15:00:02,268 home-fardin-Frappe-practice-frappe:default: Job OK (library.test::scheduled_job::0anggdapat)
+2024-12-23 15:00:02,268 Result is kept for 600 seconds
+2024-12-23 15:00:02,271 home-fardin-Frappe-practice-frappe:default: frappe.utils.background_jobs.execute_job(event=None, is_async=True, job_name='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., kwargs={'job_type': 'frappe.website.doctype.personal_data_deletion_request.persona..., method='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., site='library.test', user='Administrator') (library.test::scheduled_job::m8h69ec0he)
+2024-12-23 15:00:02,457 home-fardin-Frappe-practice-frappe:default: Job OK (library.test::scheduled_job::m8h69ec0he)
+2024-12-23 15:00:02,457 Result is kept for 600 seconds
+2024-12-23 15:00:02,461 home-fardin-Frappe-practice-frappe:default: frappe.utils.background_jobs.execute_job(event=None, is_async=True, job_name='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., kwargs={'job_type': 'frappe.email.doctype.newsletter.newsletter.send_scheduled_ema..., method='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., site='library.test', user='Administrator') (library.test::scheduled_job::d9cp75q7p4)
+2024-12-23 15:00:02,659 home-fardin-Frappe-practice-frappe:default: Job OK (library.test::scheduled_job::d9cp75q7p4)
+2024-12-23 15:00:02,659 Result is kept for 600 seconds
+2024-12-23 15:00:02,662 home-fardin-Frappe-practice-frappe:default: frappe.utils.background_jobs.execute_job(event=None, is_async=True, job_name='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., kwargs={'job_type': 'frappe.integrations.doctype.google_calendar.google_calendar.s..., method='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., site='library.test', user='Administrator') (library.test::scheduled_job::iv4f0thmi6)
+2024-12-23 15:00:02,907 home-fardin-Frappe-practice-frappe:default: Job OK (library.test::scheduled_job::iv4f0thmi6)
+2024-12-23 15:00:02,907 Result is kept for 600 seconds
+2024-12-23 15:00:02,910 home-fardin-Frappe-practice-frappe:default: frappe.utils.background_jobs.execute_job(event=None, is_async=True, job_name='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., kwargs={'job_type': 'frappe.email.queue.flush', 'scheduled_job_type': '4v1sbl4ch4'..., method='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., site='library.test', user='Administrator') (library.test::scheduled_job::4v1sbl4ch4)
+2024-12-23 15:00:03,117 home-fardin-Frappe-practice-frappe:default: Job OK (library.test::scheduled_job::4v1sbl4ch4)
+2024-12-23 15:00:03,117 Result is kept for 600 seconds
+2024-12-23 15:00:03,121 home-fardin-Frappe-practice-frappe:default: frappe.utils.background_jobs.execute_job(event=None, is_async=True, job_name='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., kwargs={'job_type': 'frappe.deferred_insert.save_to_db', 'scheduled_job_type': 'ni..., method='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., site='library.test', user='Administrator') (library.test::scheduled_job::niupglfgc5)
+2024-12-23 15:00:03,284 home-fardin-Frappe-practice-frappe:default: Job OK (library.test::scheduled_job::niupglfgc5)
+2024-12-23 15:00:03,285 Result is kept for 600 seconds
+2024-12-23 15:00:03,288 home-fardin-Frappe-practice-frappe:default: frappe.utils.background_jobs.execute_job(event=None, is_async=True, job_name='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., kwargs={'job_type': 'frappe.model.utils.user_settings.sync_user_settings', 'schedu..., method='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., site='library.test', user='Administrator') (library.test::scheduled_job::n5afo0kh2c)
+2024-12-23 15:00:03,464 home-fardin-Frappe-practice-frappe:default: Job OK (library.test::scheduled_job::n5afo0kh2c)
+2024-12-23 15:00:03,464 Result is kept for 600 seconds
+2024-12-23 15:00:03,468 home-fardin-Frappe-practice-frappe:default: frappe.utils.background_jobs.execute_job(event=None, is_async=True, job_name='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., kwargs={'job_type': 'frappe.email.doctype.email_account.email_account.notify_unrep..., method='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., site='library.test', user='Administrator') (library.test::scheduled_job::0qqthanhco)
+2024-12-23 15:00:03,642 home-fardin-Frappe-practice-frappe:default: Job OK (library.test::scheduled_job::0qqthanhco)
+2024-12-23 15:00:03,642 Result is kept for 600 seconds
+2024-12-23 15:00:03,645 home-fardin-Frappe-practice-frappe:default: frappe.utils.background_jobs.execute_job(event=None, is_async=True, job_name='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., kwargs={'job_type': 'frappe.email.doctype.notification.notification.trigger_offset..., method='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., site='library.test', user='Administrator') (library.test::scheduled_job::etuapgq4v7)
+2024-12-23 15:00:03,814 home-fardin-Frappe-practice-frappe:default: Job OK (library.test::scheduled_job::etuapgq4v7)
+2024-12-23 15:00:03,814 Result is kept for 600 seconds
+2024-12-23 15:00:03,816 home-fardin-Frappe-practice-frappe:default: frappe.utils.background_jobs.execute_job(event=None, is_async=True, job_name='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., kwargs={'job_type': 'frappe.utils.global_search.sync_global_search', 'scheduled_jo..., method='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., site='library.test', user='Administrator') (library.test::scheduled_job::7j5bgnsnc9)
+2024-12-23 15:00:03,986 home-fardin-Frappe-practice-frappe:default: Job OK (library.test::scheduled_job::7j5bgnsnc9)
+2024-12-23 15:00:03,986 Result is kept for 600 seconds
+2024-12-23 15:00:03,989 home-fardin-Frappe-practice-frappe:default: frappe.utils.background_jobs.execute_job(event=None, is_async=True, job_name='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., kwargs={'job_type': 'frappe.twofactor.delete_all_barcodes_for_users', 'scheduled_j..., method='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., site='library.test', user='Administrator') (library.test::scheduled_job::3kftimpqld)
+2024-12-23 15:00:04,156 home-fardin-Frappe-practice-frappe:default: Job OK (library.test::scheduled_job::3kftimpqld)
+2024-12-23 15:00:04,156 Result is kept for 600 seconds
+2024-12-23 15:00:04,159 home-fardin-Frappe-practice-frappe:default: frappe.utils.background_jobs.execute_job(event=None, is_async=True, job_name='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., kwargs={'job_type': 'frappe.website.doctype.web_page.web_page.check_publish_status..., method='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., site='library.test', user='Administrator') (library.test::scheduled_job::9r45bclqq7)
+2024-12-23 15:00:04,353 home-fardin-Frappe-practice-frappe:default: Job OK (library.test::scheduled_job::9r45bclqq7)
+2024-12-23 15:00:04,353 Result is kept for 600 seconds
+2024-12-23 15:04:00,052 home-fardin-Frappe-practice-frappe:default: frappe.utils.background_jobs.execute_job(event=None, is_async=True, job_name='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., kwargs={'job_type': 'frappe.email.queue.flush', 'scheduled_job_type': '4v1sbl4ch4'..., method='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., site='library.test', user='Administrator') (library.test::scheduled_job::4v1sbl4ch4)
+2024-12-23 15:04:00,268 home-fardin-Frappe-practice-frappe:default: Job OK (library.test::scheduled_job::4v1sbl4ch4)
+2024-12-23 15:04:00,268 Result is kept for 600 seconds
+2024-12-23 15:04:00,272 home-fardin-Frappe-practice-frappe:default: frappe.utils.background_jobs.execute_job(event=None, is_async=True, job_name='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., kwargs={'job_type': 'frappe.automation.doctype.reminder.reminder.send_reminders', ..., method='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., site='library.test', user='Administrator') (library.test::scheduled_job::a7bs7m2kee)
+2024-12-23 15:04:00,441 home-fardin-Frappe-practice-frappe:default: Job OK (library.test::scheduled_job::a7bs7m2kee)
+2024-12-23 15:04:00,441 Result is kept for 600 seconds
+2024-12-23 15:04:00,444 home-fardin-Frappe-practice-frappe:default: frappe.utils.background_jobs.execute_job(event=None, is_async=True, job_name='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., kwargs={'job_type': 'frappe.monitor.flush', 'scheduled_job_type': 'a3fcpp0nfk'}, method='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., site='library.test', user='Administrator') (library.test::scheduled_job::a3fcpp0nfk)
+2024-12-23 15:04:00,619 home-fardin-Frappe-practice-frappe:default: Job OK (library.test::scheduled_job::a3fcpp0nfk)
+2024-12-23 15:04:00,619 Result is kept for 600 seconds
+2024-12-23 15:08:00,133 home-fardin-Frappe-practice-frappe:default: frappe.utils.background_jobs.execute_job(event=None, is_async=True, job_name='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., kwargs={'job_type': 'frappe.monitor.flush', 'scheduled_job_type': 'a3fcpp0nfk'}, method='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., site='library.test', user='Administrator') (library.test::scheduled_job::a3fcpp0nfk)
+2024-12-23 15:08:00,310 home-fardin-Frappe-practice-frappe:default: Job OK (library.test::scheduled_job::a3fcpp0nfk)
+2024-12-23 15:08:00,310 Result is kept for 600 seconds
+2024-12-23 15:08:00,313 home-fardin-Frappe-practice-frappe:default: frappe.utils.background_jobs.execute_job(event=None, is_async=True, job_name='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., kwargs={'job_type': 'frappe.email.queue.flush', 'scheduled_job_type': '4v1sbl4ch4'..., method='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., site='library.test', user='Administrator') (library.test::scheduled_job::4v1sbl4ch4)
+2024-12-23 15:08:00,522 home-fardin-Frappe-practice-frappe:default: Job OK (library.test::scheduled_job::4v1sbl4ch4)
+2024-12-23 15:08:00,522 Result is kept for 600 seconds
+2024-12-23 15:08:00,525 home-fardin-Frappe-practice-frappe:default: frappe.utils.background_jobs.execute_job(event=None, is_async=True, job_name='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., kwargs={'job_type': 'frappe.automation.doctype.reminder.reminder.send_reminders', ..., method='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., site='library.test', user='Administrator') (library.test::scheduled_job::a7bs7m2kee)
+2024-12-23 15:08:00,694 home-fardin-Frappe-practice-frappe:default: Job OK (library.test::scheduled_job::a7bs7m2kee)
+2024-12-23 15:08:00,694 Result is kept for 600 seconds
+2024-12-23 15:08:00,697 home-fardin-Frappe-practice-frappe:default: frappe.utils.background_jobs.execute_job(event=None, is_async=True, job_name='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., kwargs={'job_type': 'frappe.email.doctype.notification.notification.trigger_offset..., method='frappe.core.doctype.scheduled_job_type.scheduled_job_type.run_scheduled_jo..., site='library.test', user='Administrator') (library.test::scheduled_job::etuapgq4v7)
+2024-12-23 15:08:00,869 home-fardin-Frappe-practice-frappe:default: Job OK (library.test::scheduled_job::etuapgq4v7)
+2024-12-23 15:08:00,869 Result is kept for 600 seconds
+2024-12-23 15:10:39,152 Worker 9c61d6f4b03e49d89a03fadb59be3fd6 [PID 46138]: warm shut down requested
+2024-12-23 15:10:39,155 Unsubscribing from channel rq:pubsub:9c61d6f4b03e49d89a03fadb59be3fd6
+Traceback (most recent call last):
+  File "/home/fardin/Frappe/practice-frappe/env/lib/python3.12/site-packages/redis/connection.py", line 357, in connect
+    sock = self.retry.call_with_retry(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/fardin/Frappe/practice-frappe/env/lib/python3.12/site-packages/redis/retry.py", line 62, in call_with_retry
+    return do()
+           ^^^^
+  File "/home/fardin/Frappe/practice-frappe/env/lib/python3.12/site-packages/redis/connection.py", line 358, in <lambda>
+    lambda: self._connect(), lambda error: self.disconnect(error)
+            ^^^^^^^^^^^^^^^
+  File "/home/fardin/Frappe/practice-frappe/env/lib/python3.12/site-packages/redis/connection.py", line 730, in _connect
+    raise err
+  File "/home/fardin/Frappe/practice-frappe/env/lib/python3.12/site-packages/redis/connection.py", line 718, in _connect
+    sock.connect(socket_address)
+ConnectionRefusedError: [Errno 111] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/fardin/Frappe/practice-frappe/apps/frappe/frappe/utils/bench_helper.py", line 48, in invoke
+    return super().invoke(ctx)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/home/fardin/Frappe/practice-frappe/env/lib/python3.12/site-packages/click/core.py", line 1697, in invoke
+    return _process_result(sub_ctx.command.invoke(sub_ctx))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/fardin/Frappe/practice-frappe/env/lib/python3.12/site-packages/click/core.py", line 1443, in invoke
+    return ctx.invoke(self.callback, **ctx.params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/fardin/Frappe/practice-frappe/env/lib/python3.12/site-packages/click/core.py", line 788, in invoke
+    return __callback(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/fardin/Frappe/practice-frappe/apps/frappe/frappe/commands/scheduler.py", line 206, in start_worker
+    start_worker(
+  File "/home/fardin/Frappe/practice-frappe/apps/frappe/frappe/utils/background_jobs.py", line 320, in start_worker
+    worker.work(
+  File "/home/fardin/Frappe/practice-frappe/env/lib/python3.12/site-packages/rq/worker.py", line 458, in work
+    self.teardown()
+  File "/home/fardin/Frappe/practice-frappe/env/lib/python3.12/site-packages/rq/worker.py", line 1049, in teardown
+    self.unsubscribe()
+  File "/home/fardin/Frappe/practice-frappe/env/lib/python3.12/site-packages/rq/worker.py", line 626, in unsubscribe
+    self.pubsub.unsubscribe()
+  File "/home/fardin/Frappe/practice-frappe/env/lib/python3.12/site-packages/redis/client.py", line 982, in unsubscribe
+    return self.execute_command("UNSUBSCRIBE", *args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/fardin/Frappe/practice-frappe/env/lib/python3.12/site-packages/redis/client.py", line 798, in execute_command
+    self._execute(connection, connection.send_command, *args, **kwargs)
+  File "/home/fardin/Frappe/practice-frappe/env/lib/python3.12/site-packages/redis/client.py", line 841, in _execute
+    return conn.retry.call_with_retry(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/fardin/Frappe/practice-frappe/env/lib/python3.12/site-packages/redis/retry.py", line 65, in call_with_retry
+    fail(error)
+  File "/home/fardin/Frappe/practice-frappe/env/lib/python3.12/site-packages/redis/client.py", line 843, in <lambda>
+    lambda error: self._disconnect_raise_connect(conn, error),
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/fardin/Frappe/practice-frappe/env/lib/python3.12/site-packages/redis/client.py", line 830, in _disconnect_raise_connect
+    raise error
+  File "/home/fardin/Frappe/practice-frappe/env/lib/python3.12/site-packages/redis/retry.py", line 62, in call_with_retry
+    return do()
+           ^^^^
+  File "/home/fardin/Frappe/practice-frappe/env/lib/python3.12/site-packages/redis/client.py", line 842, in <lambda>
+    lambda: command(*args, **kwargs),
+            ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/fardin/Frappe/practice-frappe/env/lib/python3.12/site-packages/redis/connection.py", line 556, in send_command
+    self.send_packed_command(
+  File "/home/fardin/Frappe/practice-frappe/env/lib/python3.12/site-packages/redis/connection.py", line 526, in send_packed_command
+    self.connect()
+  File "/home/fardin/Frappe/practice-frappe/env/lib/python3.12/site-packages/redis/connection.py", line 363, in connect
+    raise ConnectionError(self._error_message(e))
+redis.exceptions.ConnectionError: Error 111 connecting to 127.0.0.1:11000. Connection refused.
+
+Error 111 connecting to 127.0.0.1:11000. Connection refused.
