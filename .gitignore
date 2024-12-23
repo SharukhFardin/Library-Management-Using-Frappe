@@ -1,0 +1,48 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# Virtual environment
+env/
+venv/
+*.env
+
+# Logs and databases
+*.log
+*.sqlite3
+
+# Node modules
+node_modules/
+
+# Frappe specific
+*.pyc
+*.swp
+*.swo
+*.swn
+sites/assets/
+sites/apps.txt
+sites/*/locks/
+sites/*/logs/
+sites/*/public/files/
+sites/*/public/backups/
+sites/*/private/backups/
+sites/*/private/files/
+
+# VSCode
+.vscode/
+
+# JetBrains IDEs
+.idea/
+*.iml
+
+# System files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Temporary files
+*.tmp
+*.temp
+*.bak
